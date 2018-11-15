@@ -1,3 +1,49 @@
 <!--  The “test.html” page must provide a description of your testing efforts. Even
 though this page does not need to be particularly nice, you it should still be
 usable and present your work in a meaningful and academically appropriate way. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>All Challenges</h1>
+<ul id="challenges">
+
+</ul>
+<script>
+
+    var challengesList = document.getElementById("challenges");
+    function getChallenges() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 200) {
+                console.log(this.responseText);
+                var object = JSON.parse(this.responseText);
+                console.log("STATUS ==> "+object.status);
+                for (var i = 0;i<object.treasureHunts.length;i++)
+                {
+                    var newItem = document.createElement("li");
+                    var linkItem = document.createElement("a");
+                    linkItem.innerHTML = object.treasureHunts[i].name;
+                    linkItem.href = "https://codecyprus.org/th/api/start?player=Homer&app=simpsons&treasure-hunt-id="+object.treasureHunts[i].uuid; //TODO REPLACE
+                    newItem.appendChild(linkItem);
+                    challengesList.appendChild(newItem);
+
+                    //  console.log(object.treasureHunts[i].name);
+                }
+            }
+            else {
+                //TODO If response not received (error).
+            }
+        };
+        xhttp.open("Get", "https://codecyprus.org/th/api/list", true);
+        xhttp.send();
+    }
+    getChallenges();
+
+</script>
+</body>
+</html>
