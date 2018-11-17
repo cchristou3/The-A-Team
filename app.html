@@ -8,7 +8,6 @@ single page for the whole app or multiple pages (e.g. individual pages for “st
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sample Treasure Hunt Web App</title>
     <link rel="stylesheet" href="sample.css"/>
-    <script src="th-api.js"></script>
 </head>
 <body>
  <div>
@@ -47,6 +46,13 @@ single page for the whole app or multiple pages (e.g. individual pages for “st
  <div id="message" class="infoMessage">
         No messages
  </div>
+ <button onclick="getChallenges()">Click to load challenges </button>
+ <ul id="challenges">
+
+ </ul>
+<div>
+    This is where the question is going to be provided from the server-> function Question?
+</div>
 
     <!--Load the API JavaScript-->
     <script src="th-api.js"></script>
