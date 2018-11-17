@@ -1,7 +1,10 @@
 
 var challengesList = document.getElementById("challenges");
 function getChallenges() {
+    // This line makes sure the button disappears once it is pressed
     document.getElementById("btn").style.display = "none";
+    // Implement code that adds "List of all treasuehunts" in the buttons place
+
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
