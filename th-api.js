@@ -30,3 +30,22 @@ function getChallenges() {
     xhttp.open("Get", "https://codecyprus.org/th/api/list", true);
     xhttp.send();
 }
+
+// this function is responsible for loading a form. The user will be asked to complete  form with
+// Name, App name  -> onSubmit he will be redirected to the game based on his "progress"
+function start() {
+    // make change style of form to "block" via javascript
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            console.log(this.responseText);
+            var object = JSON.parse(this.responseText);
+            console.log("STATUS ==> " + object.status);
+            var form = document.createElement(form);
+            var formlnk = document.createElement("a");
+
+
+        }
+    }
+}
+
