@@ -20,7 +20,7 @@ function getChallenges() {
                 linkItem.href = "#";
                 newItem.appendChild(linkItem);
                 challengesList.appendChild(newItem);
-                linkItem.onclick = this.start();
+                linkItem.onclick = start();
 
 
                 //  console.log(object.treasureHunts[i].name);
@@ -38,7 +38,7 @@ function getChallenges() {
 // Name, App name  -> onSubmit he will be redirected to the game based on his "progress"
 function start() {
     // make change style of form to "block" via javascript
-    document.getElementById("btn").style.display = "block";
+    document.getElementById("formTH").style.display = "block";
 
 
 }
