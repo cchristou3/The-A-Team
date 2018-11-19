@@ -7,7 +7,7 @@ single page for the whole app or multiple pages (e.g. individual pages for “st
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sample Treasure Hunt Web App</title>
-    <link rel="stylesheet" href="sample.css"/>
+    <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
  <div>
@@ -38,14 +38,27 @@ single page for the whole app or multiple pages (e.g. individual pages for “st
  <div id="loader" class="loader" hidden></div>
 
  <div>Choose a treasure Hunt</div>
-
+ <button id="btn" onclick="getChallenges()">Click to load challenges </button>
   <div id="treasureHunts">
-        Empty
-  </div>
+      <ul id="challenges">
+
+      </ul>  </div>
+ <form id = "formTH">
+     <p>Player name: <input type="text" name="Pname"></p>
+     <p>App name: <input type="text" name="Aname"></p>
+     <p><input type="submit" value="Submit"></p>
+ </form>
 
  <div id="message" class="infoMessage">
         No messages
  </div>
+
+ <!-- this section is where the list of available treasure hunts will be loaded -->
+
+
+<div>
+    This is where the question is going to be provided from the server-> function Question?
+</div>
 
     <!--Load the API JavaScript-->
     <script src="th-api.js"></script>
