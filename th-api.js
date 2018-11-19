@@ -16,8 +16,8 @@ function getChallenges() {
                 var newItem = document.createElement("li");
                 var linkItem = document.createElement("a");
                 linkItem.innerHTML = object.treasureHunts[i].name;
-               // linkItem.href = "https://codecyprus.org/th/api/start?player=Homer&app=simpsons&treasure-hunt-id="+object.treasureHunts[i].uuid; //TODO REPLACE
-                linkItem.href = "#";
+               linkItem.href = "https://codecyprus.org/th/api/start?player=Homer&app=simpsons&treasure-hunt-id="+object.treasureHunts[i].uuid; //TODO REPLACE
+               // linkItem.href = "#";
                 newItem.appendChild(linkItem);
                 challengesList.appendChild(newItem);
                 linkItem.onclick = start();
