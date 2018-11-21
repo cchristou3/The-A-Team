@@ -1,5 +1,6 @@
 const TH_API_URL = "https://codecyprus.org/th/api/"; // the API base url
 
+// object
 let x = {
     name: "",
     score:""
@@ -39,17 +40,21 @@ function getChallenges() {
     xhttp.open("Get", "https://codecyprus.org/th/api/list", true);
     xhttp.send();
 }
+// Still needs work
+// Gets the parameter in the url
 function getPara(parameter)
 {
     let url = new URL(window.location.href);
     return url.searchParams.get("parameter");
 }
+// Still needs work
+// Put all player names in an array
 function getInfo() {
-    let v = document.getElementById("formTH").value;
+    let v = document.getElementById("formInput").value;
+    console.log("v: " + v);
     arrayX.push(v);
     console.log(arrayX);
 }
-
 
 // this function is responsible for loading a form. The user will be asked to complete  form with
 // Name, App name  -> onSubmit he will be redirected to the game based on his "progress"
@@ -57,14 +62,5 @@ function getInfo() {
     // make change style of form to "block" via javascript
 //    document.getElementById("formTH").style.display = "block";
 //}
-//-----------------------------------------------//
-// the basic code for html requests:
-//var xhttp = new XMLHttpRequest();
-//xhttp.onreadystatechange = function() {
-    //if (this.readyState === 4 && this.status === 200) {
-   //     handleSuccess();
-  //  }
-//};
-//xhttp.open("*METHOD*", "*URL*", true);
-//xhttp.send();
+
 
