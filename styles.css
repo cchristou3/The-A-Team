@@ -3,13 +3,13 @@
 }
 h1{
     font-family: "Bell MT", sans-serif ;
-    font-size:70px ;
+    font-size:30px ;
     text-align:center;
     color:black ;
 
 }
 .h1box {
-    margin: 30px;
+    margin: 20px;
     background-color: #ffffff;
     border: 3px solid yellow;
     opacity: 0.6;
@@ -18,16 +18,17 @@ h1{
 
 
 h2{font-family:sans-serif;
-    font-size:40px;
+    font-size:20px;
     text-align:center;
     color:white;
     border:3px solid yellow;
     background-color: black;
+    margin:20px;
 
 
 }
 h3{font-family:sans-serif;
-    font-size:50px;
+    font-size:30px;
     text-align:center;
     color :white;}
 
@@ -37,17 +38,17 @@ body {background: url("background.jpeg") no-repeat;}
 .pirate {
 
     display: block;
-    margin: 50px auto;
-    width: 400px;
-    height: 380px;
+    margin: 30px auto;
+    width: 200px;
+    height: 180px;
 }
 
 .begin{
     display: block;
     background-color: green;
     color: black;
-    padding: 10px 1px;
-    font-size: 40px;
+    padding: 5px 1px;
+    font-size: 20px;
     cursor: pointer;
     width:100px;
     margin-left:auto;
@@ -67,16 +68,17 @@ body {background: url("background.jpeg") no-repeat;}
     transform: translateY(4px);
 }
 .help{
+    text-align: center;
     display:block;
     background-color: green;
     color: black;
-    padding: 10px 1px;
-    font-size: 40px;
+    padding: 5px 1px;
+    font-size: 20px;
     cursor: pointer;
     width:100px;
     margin-left:auto;
     margin-right:auto;
-    margin-top:50px;
+    margin-top:30px;
     border: outset white;
 
 }
@@ -86,14 +88,15 @@ body {background: url("background.jpeg") no-repeat;}
 }
 .fa {
 
-    padding: 40px;
-    font-size: 70px;
-    width: 50px;
+    padding: 20px;
+    font-size: 30px;
+    width: 20px;
     text-align: center;
     text-decoration: none;
     float: left;
-    height:34px;
-    margin: 0 10px 0 auto;
+    height:24px;
+    margin-top: 30px;
+    margin-left: 10px;
 }
 
 .fa:hover {
@@ -110,17 +113,17 @@ body {background: url("background.jpeg") no-repeat;}
     color: white;
 
 }
-.helplist{
-    font-family: "Bell MT", sans-serif ;
-    font-size:40px ;
-    text-align:center;
-    color:white ;
+.helplist {
+    font-family: "Bell MT", sans-serif;
+    font-size: 20px;
+    text-align: center;
+    color: white;
     background-color: #125688;
     margin: 30px;
     border: 3px solid yellow;
     opacity: 0.8;
     filter: alpha(opacity=60);
-
-
-
 }
+
+
+
