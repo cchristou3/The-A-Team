@@ -1,3 +1,13 @@
+const TH_API_URL = "https://codecyprus.org/th/api/"; // the API base url
+
+let x = {
+    name: "",
+    score:""
+};
+// array that contains objects
+let arrayX = [
+    {name:"",score:""}
+];
 
 var challengesList = document.getElementById("challenges");
 function getChallenges() {
@@ -16,13 +26,9 @@ function getChallenges() {
                 var newItem = document.createElement("li");
                 var linkItem = document.createElement("a");
                 linkItem.innerHTML = object.treasureHunts[i].name;
-               linkItem.href = "https://codecyprus.org/th/api/start?player=Homer&app=simpsons&treasure-hunt-id="+object.treasureHunts[i].uuid; //TODO REPLACE
-               // linkItem.href = "#";
+                linkItem.href = "https://codecyprus.org/th/api/start?player=Homer&app=simpsons&treasure-hunt-id="+object.treasureHunts[i].uuid; //TODO REPLACE
                 newItem.appendChild(linkItem);
                 challengesList.appendChild(newItem);
-                linkItem.onclick = start();
-
-
                 //  console.log(object.treasureHunts[i].name);
             }
         }
@@ -33,29 +39,32 @@ function getChallenges() {
     xhttp.open("Get", "https://codecyprus.org/th/api/list", true);
     xhttp.send();
 }
+function getPara(parameter)
+{
+    let url = new URL(window.location.href);
+    return url.searchParams.get("parameter");
+}
+function getInfo() {
+    let v = document.getElementById("formTH").value;
+    arrayX.push(v);
+    console.log(arrayX);
+}
+
 
 // this function is responsible for loading a form. The user will be asked to complete  form with
 // Name, App name  -> onSubmit he will be redirected to the game based on his "progress"
-function start() {
+//function start() {
     // make change style of form to "block" via javascript
-    document.getElementById("formTH").style.display = "block";
-
-
-}
-
-
- /*   xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
-            console.log(this.responseText);
-            var object = JSON.parse(this.responseText);
-            console.log("STATUS ==> " + object.status);
-            var form = document.createElement(form);
-            var formlnk = document.createElement("a");
-
-
-        }
-    }
-}
-*/
+//    document.getElementById("formTH").style.display = "block";
+//}
+//-----------------------------------------------//
+// the basic code for html requests:
+//var xhttp = new XMLHttpRequest();
+//xhttp.onreadystatechange = function() {
+    //if (this.readyState === 4 && this.status === 200) {
+   //     handleSuccess();
+  //  }
+//};
+//xhttp.open("*METHOD*", "*URL*", true);
+//xhttp.send();
 
