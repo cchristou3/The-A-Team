@@ -41,21 +41,32 @@ function getChallenges() {
     xhttp.send();
 }
 getChallenges();
+
+function getQuestions() {
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            console.log(this.responseText);
+            var object = JSON.parse(this.responseText);
+        }
+    }
+}
 // Still needs work
 // Gets the parameter in the url
-function getPara(parameter)
-{
-    let url = new URL(window.location.href);
-    return url.searchParams.get("parameter");
-}
+    function getPara(parameter) {
+        let url = new URL(window.location.href);
+        return url.searchParams.get("parameter");
+    }
+
 // Still needs work
 // Put all player names in an array
-function getInfo() {
-    let v = document.getElementById("formInput").value;
-    console.log("v: " + v);
-    arrayX.push(v);
-    console.log(arrayX);
-}
+    function getInfo() {
+        let v = document.getElementById("formInput").value;
+        console.log("v: " + v);
+        arrayX.push(v);
+        console.log(arrayX);
+    }
+
 
 // this function is responsible for loading a form. The user will be asked to complete  form with
 // Name, App name  -> onSubmit he will be redirected to the game based on his "progress"
