@@ -13,7 +13,7 @@ let arrayX = [
 var challengesList = document.getElementById("challenges");
 function getChallenges() {
     // This line makes sure the button disappears once it is pressed
-    document.getElementById("btn").style.display = "none";
+  //  document.getElementById("btn").style.display = "none";
     // Implement code that adds "List of all treasuehunts" in the buttons place
 
     xhttp = new XMLHttpRequest();
@@ -40,6 +40,7 @@ function getChallenges() {
     xhttp.open("Get", "https://codecyprus.org/th/api/list", true);
     xhttp.send();
 }
+getChallenges();
 // Still needs work
 // Gets the parameter in the url
 function getPara(parameter)
