@@ -27,9 +27,13 @@ function getChallenges() {
                 var newItem = document.createElement("li");
                 var linkItem = document.createElement("a");
                 linkItem.innerHTML = object.treasureHunts[i].name;
+                newItem.id = "#myLink";
                 linkItem.href = "https://codecyprus.org/th/api/start?player=Homer&app=simpsons&treasure-hunt-id="+object.treasureHunts[i].uuid; //TODO REPLACE
                 newItem.appendChild(linkItem);
                 challengesList.appendChild(newItem);
+                //  var e = document.getElementById("#myLink");
+               //   e.onclick = submit;
+
                 //  console.log(object.treasureHunts[i].name);
             }
         }
@@ -42,14 +46,34 @@ function getChallenges() {
 }
 getChallenges();
 
+function submit()
+{
+    document.getElementById("formTH").style.display = "block";
+}
 function getQuestions() {
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             console.log(this.responseText);
             var object = JSON.parse(this.responseText);
+            let session = getPara("session");
         }
     }
+    xhttp.open("Get", "https://codecyprus.org/th/api/question?+session="+getPara(session), true);
+    xhttp.send();
+}
+function answer()
+{
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            console.log(this.responseText);
+            var object = JSON.parse(this.responseText);
+            let answer = getPara("answer");
+        }
+    }
+    xhttp.open("Get", "https://codecyprus.org/th/api/answer?+session="+getPara(session)+"&answer=" + answer , true);
+    xhttp.send();
 }
 // Still needs work
 // Gets the parameter in the url
