@@ -39,6 +39,8 @@ function getChallenges() {
         }
         else {
             //TODO If response not received (error).
+            // Need to run without Internet connection to be tested
+            console.error("message");
         }
     };
     xhttp.open("Get", "https://codecyprus.org/th/api/list", true);
