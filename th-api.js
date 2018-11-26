@@ -21,9 +21,9 @@ function getChallenges() {
     xhttp.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
             console.log(this.responseText);
-            var object = JSON.parse(this.responseText);
+            let object = JSON.parse(this.responseText);
             console.log("STATUS ==> "+object.status);
-            for (var i = 0;i<object.treasureHunts.length;i++)
+            for (let i = 0;i<object.treasureHunts.length;i++)
             {
                 var newItem = document.createElement("li");
                 var linkItem = document.createElement("a");
@@ -62,6 +62,31 @@ function getChallenges() {
 // need to save the session when a link is clicked
 getChallenges();
 
+//-----------------------------------------------------------------------------------------//
+// this function is responsible for loading a form. The user will be asked to complete  form with
+// Name, App name  -> onSubmit he will be redirected to the game based on his "progress"
+function start(getName,getApp) {
+    //  make change style of form to "block" via javascript
+    // document.getElementById("formTH").style.display = "none";
+
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            console.log(this.responseText);
+            let object = JSON.parse(this.responseText);
+            // Creates paragraph to input the question
+            let question = document.createElement("p");
+            let a = document.getElementById("QuestionArea");
+
+
+
+        }
+    };
+    xhttp.open("Get", "https://codecyprus.org/th/api/start?"+"Pname="+getName+"&Aname="+getApp+"&treasure-hunt-id="+getCookie("uuid"), true);
+    xhttp.send();
+}
+
+
 var quest = document.getElementById("QuestionArea");
 var session;
 function getQuestions() {
@@ -86,18 +111,21 @@ function answer()
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             console.log(this.responseText);
-            var object = JSON.parse(this.responseText);
+            let object = JSON.parse(this.responseText);
             let answer = getPara("answer");
         }
-    }
+    };
     xhttp.open("Get", "https://codecyprus.org/th/api/answer?+session="+getPara(session)+"&answer=" + answer , true);
     xhttp.send();
 }
 // Still needs work
 // Gets the parameter in the url
-    function getPara(parameter) {
-        let url = new URL(window.location.href);
-        return url.searchParams.get("parameter");
+    function getParameters(parameter) {
+    //    let url = new URL(window.location.href);
+    //    return url.searchParams.get("parameter");
+        let getName  = document.getElementById("playerName");
+        let getApp  = document.getElementById("appName");
+        start(getName.value,getApp.value);
     }
 
 // Still needs work
@@ -110,18 +138,18 @@ function answer()
     }
     //setCookie,getCookie,checkCookies from w3Schools.com
    function setCookie(Cookiename,value,exday){
-  var a = new Date();
+  let a = new Date();
   a.setTime(a.getTime() + (exday*24*60*60*1000));
- var expires="expires="+ a.toUTCString();
+ let expires="expires="+ a.toUTCString();
  document.cookie= Cookiename+"="+ value +";"+ expires+";path=/";
  }
 function getCookie(Cookiename){
-    var name=Cookiename +"=";
-    var decodedCookie=decodeURIComponent(document.cookie);
-    var CookieArray = decodedCookie.split(';');
-    for (var a=0; a<CookieArray.length; a++)
+    let name=Cookiename +"=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let CookieArray = decodedCookie.split(';');
+    for (let a=0; a<CookieArray.length; a++)
     {
-    var v=CookieArray[a];
+    let v=CookieArray[a];
     while(v.charAt(0)=== ' '){
         v=v.substring(1);
     }
@@ -132,7 +160,7 @@ function getCookie(Cookiename){
     return "";
 }
 function checkCookie() {
-    var username = getCookie("username");
+    let username = getCookie("username");
     if (username !== "") {
         alert("Welcome again " + username);
     } else {
@@ -143,11 +171,6 @@ function checkCookie() {
     }
 }
 
-// this function is responsible for loading a form. The user will be asked to complete  form with
-// Name, App name  -> onSubmit he will be redirected to the game based on his "progress"
-//function start() {
-    // make change style of form to "block" via javascript
-//    document.getElementById("formTH").style.display = "block";
-//}
+
 
 
