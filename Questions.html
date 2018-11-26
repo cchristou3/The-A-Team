@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Category</title>
+
+</head>
+<link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="styles.css">
+<body>
+
+<div class="h1box">
+    <h1> The Treasure Hunt</h1>
+</div>
+
+<h2 >Select a treasure hunt to start playing!</h2>
+<!-- Pirate Picture -->
+<img src="pirate.jpg" alt="Pirate" class="pirate" >
+<div id="QuestionArea">
+
+</div>
+
+<div id ="Select">
+    <table>
+        <tr>
+            <th><button onclick="answer()">A</button></th>
+            <th><button onclick="answer()">B</button></th>
+        </tr>
+        <tr>
+            <th><button onclick="answer()">C</button></th>
+            <th><button onclick="answer()">D</button></th>
+        </tr>
+    </table>
+</div>
+
+<div id = "Text">
+    <form action="">
+        Answer: <input type="text" name="answer">
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+<div id =Numbers>
+    <table>
+        <tr>
+            <th><button onclick="answer()">1</button></th>
+            <th><button onclick="answer()">2</button></th>
+            <th><button onclick="answer()">3</button></th>
+        </tr>
+        <tr>
+            <th><button onclick="answer()">4</button></th>
+            <th><button onclick="answer()">5</button></th>
+            <th><button onclick="answer()">6</button></th>
+        </tr>
+        <tr>
+            <th><button onclick="answer()">7</button></th>
+            <th><button onclick="answer()">9</button></th>
+            <th><button onclick="answer()">8</button></th>
+        </tr>
+        <tr>
+            <th></th>
+            <th><button onclick="answer()">0</button></th>
+            <th></th>
+        </tr>
+    </table>
+</div>
+
+<div id="Boolean">
+    <table>
+        <tr>
+            <th><button onclick="answer()">True</button></th>
+            <th><button onclick="answer()">False</button></th>
+        </tr>
+    </table>
+</div>
+
+<div id="Numeric">
+    <form>
+        <input type = "number" step="0.0001" >
+        <input type= "submit" onsubmit="answer()">
+    </form>
+</div>
+
+<!--Help Button -->
+<a href="index.html" class="help">Back</a>
+<a href="help.html" class="help">Help</a>
+<script src="th-api.js"></script>
+</body>
+</html>
