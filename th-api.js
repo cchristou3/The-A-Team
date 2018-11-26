@@ -108,12 +108,12 @@ function answer()
         arrayX.push(v);
         console.log(arrayX);
     }
-   // function setCookie(Cookiename,value,exday){
-//  var a = new Date();
-//  a.setTime(a.getTime() + (exday*24*60*60*1000));
-//  var expires="expires="+ a.toUTCString();
-//  document.cookie= Cookiename+"="+ value +";"+ expires+";path=/";
-// }
+   function setCookie(Cookiename,value,exday){
+  var a = new Date();
+  a.setTime(a.getTime() + (exday*24*60*60*1000));
+ var expires="expires="+ a.toUTCString();
+ document.cookie= Cookiename+"="+ value +";"+ expires+";path=/";
+ }
 function getCookie(Cookiename){
     var name=Cookiename +"=";
     var decodedCookie=decodeURIComponent(document.cookie);
@@ -129,6 +129,17 @@ function getCookie(Cookiename){
     }
     }
     return "";
+}
+function checkCookie() {
+    var username = getCookie("username");
+    if (username !== "") {
+        alert("Welcome again " + username);
+    } else {
+        username = prompt("Please enter your name:", "");
+        if (username !== "" && username != null) {
+            setCookie("username", username, 365);
+        }
+    }
 }
 
 // this function is responsible for loading a form. The user will be asked to complete  form with
