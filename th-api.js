@@ -11,6 +11,7 @@ let arrayX = [
 ];
 
 var challengesList = document.getElementById("challenges");
+
 function getChallenges() {
     // This line makes sure the button disappears once it is pressed
   //  document.getElementById("btn").style.display = "none";
@@ -33,13 +34,14 @@ function getChallenges() {
                 //linkItem.href = "https://codecyprus.org/th/api/start?player=Homer&app=simpsons&treasure-hunt-id="+object.treasureHunts[i].uuid; //TODO REPLACE
                 newItem.appendChild(linkItem);
                 challengesList.appendChild(newItem);
-                var e = document.getElementById("#myLink");
-                e.onclick = submit;
+
 
                 //  console.log(object.treasureHunts[i].name);
             }
+            var e = document.getElementById("#myLink");
+            e.onclick = submit;
             document.cookie = "uuid"+object.treasureHunts[0].uuid;
-            console.log(getCookies(uuid));
+            console.log(getCookie(object.treasureHunts[0].uuid));
 
         }
         else {
