@@ -31,11 +31,11 @@ function getChallenges() {
                 newItem.id = "#myLink";
                 //newItem.id = "#myLink"; +i;
                 linkItem.href ="#";
-
+                console.log("1223");
                 //linkItem.href = "https://codecyprus.org/th/api/start?player=Homer&app=simpsons&treasure-hunt-id="+object.treasureHunts[i].uuid; //TODO REPLACE
                 newItem.appendChild(linkItem);
                 challengesList.appendChild(newItem);
-
+                console.log("5555");
 
                 //  console.log(object.treasureHunts[i].name);
             }
@@ -47,7 +47,6 @@ function getChallenges() {
             document.cookie = "uuid"+object.treasureHunts[0].uuid;
             console.log(document.cookie);
             console.log(getCookie("uuid"));
-
 
         }
         else {
@@ -68,7 +67,7 @@ getChallenges();
 function start(getName,getApp) {
     //  make change style of form to "block" via javascript
     // document.getElementById("formTH").style.display = "none";
-
+ console.log("1");
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
@@ -77,15 +76,9 @@ function start(getName,getApp) {
 
             // TODO Check for errors
 
-
           //  else
-                {
-                    window.location.href = "Questions.html";
-                }
-
-
-
-
+            console.log("1");
+                //    window.location.href = "Questions.html";
         }
     };
     xhttp.open("Get", "https://codecyprus.org/th/api/start?"+"Pname="+getName+"&Aname="+getApp+"&treasure-hunt-id="+getCookie("uuid"), true);
@@ -117,10 +110,11 @@ function getQuestions() {
     function getParameters() {
     //    let url = new URL(window.location.href);
     //    return url.searchParams.get("parameter");
-        document.getElementById("treasureHuntsList").style.display = "none";
         let getName  = document.getElementById("playerName");
         let getApp  = document.getElementById("appName");
         start(getName.value,getApp.value);
+        console.log(getName);
+        console.log(getApp);
     }
 
 // Still needs work

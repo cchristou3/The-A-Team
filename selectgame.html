@@ -22,11 +22,11 @@
     </ul>
 </div>
 <div> <!-- This loads the form -->
-    <form id = "formTH"> <!-- action="javascript:getInfo()" -->
+    <form action="#"  onsubmit ="getParameters();return false" id = "formTH"> <!-- action="javascript:getInfo()" -->
         <p>Player name:<input id="playerName" type="text" name="Pname"></p>
         <p>App name:<input id="appName" type="text"  name="Aname"></p>
-        <p><input type="submit" onsubmit ="getParameters()"></p>
-
+        <p><input type="submit"></p>
+    </form>
 <!--Help Button -->
 <a href="index.html" class="help">Back</a>
 <a href="help.html" class="help">Help</a>
