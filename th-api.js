@@ -74,9 +74,15 @@ function start(getName,getApp) {
         if (this.readyState === 4 && this.status === 200) {
             console.log(this.responseText);
             let object = JSON.parse(this.responseText);
-            // Creates paragraph to input the question
-            let question = document.createElement("p");
-            let a = document.getElementById("QuestionArea");
+
+            // TODO Check for errors
+
+
+          //  else
+                {
+                    window.location.href = "Questions.html";
+                }
+
 
 
 
@@ -95,7 +101,7 @@ function getQuestions() {
         if (this.readyState === 4 && this.status === 200) {
             console.log(this.responseText);
             let object = JSON.parse(this.responseText);
-            session = getPara("session");
+            session = getParameter("session");
             let newEl = document.createElement("p");
             newEl.innerHTML = object.question[0].name;
             quest.appendChild(newEl);
@@ -105,24 +111,13 @@ function getQuestions() {
     xhttp.open("Get", "https://codecyprus.org/th/api/question?+session="+session, true);
     xhttp.send();
 }
-function answer()
-{
-    xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
-            console.log(this.responseText);
-            let object = JSON.parse(this.responseText);
-            let answer = getPara("answer");
-        }
-    };
-    xhttp.open("Get", "https://codecyprus.org/th/api/answer?+session="+getPara(session)+"&answer=" + answer , true);
-    xhttp.send();
-}
+
 // Still needs work
 // Gets the parameter in the url
-    function getParameters(parameter) {
+    function getParameters() {
     //    let url = new URL(window.location.href);
     //    return url.searchParams.get("parameter");
+        document.getElementById("treasureHuntsList").style.display = "none";
         let getName  = document.getElementById("playerName");
         let getApp  = document.getElementById("appName");
         start(getName.value,getApp.value);
