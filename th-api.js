@@ -62,6 +62,31 @@ function getChallenges() {
 // need to save the session when a link is clicked
 getChallenges();
 
+//-----------------------------------------------------------------------------------------//
+// this function is responsible for loading a form. The user will be asked to complete  form with
+// Name, App name  -> onSubmit he will be redirected to the game based on his "progress"
+function start(getName,getApp) {
+    //  make change style of form to "block" via javascript
+    // document.getElementById("formTH").style.display = "none";
+
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            console.log(this.responseText);
+            let object = JSON.parse(this.responseText);
+            // Creates paragraph to input the question
+            let question = document.createElement("p");
+            let a = document.getElementById("QuestionArea");
+
+
+
+        }
+    };
+    xhttp.open("Get", "https://codecyprus.org/th/api/start?"+"Pname="+getName+"&Aname="+getApp+"&treasure-hunt-id="+getCookie("uuid"), true);
+    xhttp.send();
+}
+
+
 var quest = document.getElementById("QuestionArea");
 var session;
 function getQuestions() {
@@ -89,15 +114,18 @@ function answer()
             let object = JSON.parse(this.responseText);
             let answer = getPara("answer");
         }
-    }
+    };
     xhttp.open("Get", "https://codecyprus.org/th/api/answer?+session="+getPara(session)+"&answer=" + answer , true);
     xhttp.send();
 }
 // Still needs work
 // Gets the parameter in the url
-    function getPara(parameter) {
-        let url = new URL(window.location.href);
-        return url.searchParams.get("parameter");
+    function getParameters(parameter) {
+    //    let url = new URL(window.location.href);
+    //    return url.searchParams.get("parameter");
+        let getName  = document.getElementById("playerName");
+        let getApp  = document.getElementById("appName");
+        start(getName.value,getApp.value);
     }
 
 // Still needs work
@@ -117,7 +145,7 @@ function answer()
  }
 function getCookie(Cookiename){
     let name=Cookiename +"=";
-    let decodedCookie=decodeURIComponent(document.cookie);
+    let decodedCookie = decodeURIComponent(document.cookie);
     let CookieArray = decodedCookie.split(';');
     for (let a=0; a<CookieArray.length; a++)
     {
