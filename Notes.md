@@ -29,5 +29,9 @@ Attendance:Antonis,Charalambos,Christodoulos
 Working on the assignment. Trying to find a way to click all of the treasure hunts and make the form appearing.
 -Conclusion We've added 2 new functions and also added some type of answering questions.
 
+Week 3(Nov 26th)
+Attendance:Antonis,Charalambos,Christodoulos
+Working on the assignment. Trying to implement cookies and fix some functions.
+
 
 

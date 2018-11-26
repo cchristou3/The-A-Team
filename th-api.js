@@ -98,7 +98,28 @@ function answer()
         arrayX.push(v);
         console.log(arrayX);
     }
-
+   // function setCookie(Cookiename,value,exday){
+//  var a = new Date();
+//  a.setTime(a.getTime() + (exday*24*60*60*1000));
+//  var expires="expires="+ a.toUTCString();
+//  document.cookie= Cookiename+"="+ value +";"+ expires+";path=/";
+// }
+function getCookie(Cookiename){
+    var name=Cookiename +"=";
+    var decodedCookie=decodeURIComponent(document.cookie);
+    var CookieArray = decodedCookie.split(';');
+    for (var a=0; a<CookieArray.length; a++)
+    {
+    var v=CookieArray[i];
+    while(v.charAt(0)=== ' '){
+        v=v.substring(1);
+    }
+    if(v.indexOf(name)=== 0){
+        return v.substring(name.length,v.length);
+    }
+    }
+    return "";
+}
 
 // this function is responsible for loading a form. The user will be asked to complete  form with
 // Name, App name  -> onSubmit he will be redirected to the game based on his "progress"
