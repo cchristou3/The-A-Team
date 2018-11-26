@@ -1,7 +1,7 @@
-<!-- The “notes.html” or “notes.md” page where you must log your progress in the
+ The “notes.html” or “notes.md” page where you must log your progress in the
 project. Ideally you will have weekly (or more frequent) entries, explaining what
 you worked on since the previous meeting, and short descriptions of what
-individual members worked on. -->
+individual members worked on.
 
 Team 
 The team consists of the following members (with the assigned roles):
@@ -23,6 +23,11 @@ Week 2(Nov 19th)
 Attendance:Antonis,Charalambos
 Check everyone's progress and discuss about problems and if everything is going well assign everyone new tasks.
 Trying to work with the functions
+
+Week 2 (Nov 22th)
+Attendance:Antonis,Charalambos,Christodoulos
+Working on the assignment. Trying to find a way to click all of the treasure hunts and make the form appearing.
+-Conclusion We've added 2 new functions and also added some type of answering questions.
 
 
 

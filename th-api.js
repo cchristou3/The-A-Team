@@ -39,6 +39,8 @@ function getChallenges() {
         }
         else {
             //TODO If response not received (error).
+            // Need to run without Internet connection to be tested
+            console.error("message");
         }
     };
     xhttp.open("Get", "https://codecyprus.org/th/api/list", true);
@@ -50,16 +52,22 @@ function submit()
 {
     document.getElementById("formTH").style.display = "block";
 }
+var quest = document.getElementById("QuestionArea");
+var session;
 function getQuestions() {
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             console.log(this.responseText);
-            var object = JSON.parse(this.responseText);
-            let session = getPara("session");
+            let object = JSON.parse(this.responseText);
+            session = getPara("session");
+            let newEl = document.createElement("p");
+            newEl.innerHTML = object.question[0].name;
+            quest.appendChild(newEl);
+
         }
-    }
-    xhttp.open("Get", "https://codecyprus.org/th/api/question?+session="+getPara(session), true);
+    };
+    xhttp.open("Get", "https://codecyprus.org/th/api/question?+session="+session, true);
     xhttp.send();
 }
 function answer()
