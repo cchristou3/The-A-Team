@@ -28,11 +28,13 @@ function getChallenges() {
                 var linkItem = document.createElement("a");
                 linkItem.innerHTML = object.treasureHunts[i].name;
                 newItem.id = "#myLink";
-                linkItem.href = "https://codecyprus.org/th/api/start?player=Homer&app=simpsons&treasure-hunt-id="+object.treasureHunts[i].uuid; //TODO REPLACE
+                linkItem.href ="#";
+
+                //linkItem.href = "https://codecyprus.org/th/api/start?player=Homer&app=simpsons&treasure-hunt-id="+object.treasureHunts[i].uuid; //TODO REPLACE
                 newItem.appendChild(linkItem);
                 challengesList.appendChild(newItem);
-                //  var e = document.getElementById("#myLink");
-               //   e.onclick = submit;
+                var e = document.getElementById("#myLink");
+                e.onclick = getQuestions();
 
                 //  console.log(object.treasureHunts[i].name);
             }
@@ -51,6 +53,8 @@ getChallenges();
 function submit()
 {
     document.getElementById("formTH").style.display = "block";
+    document.getElementById("treasureHunts").style.display= "none";
+    console.log(this.response)
 }
 var quest = document.getElementById("QuestionArea");
 var session;
@@ -62,8 +66,8 @@ function getQuestions() {
             let object = JSON.parse(this.responseText);
             session = getPara("session");
             let newEl = document.createElement("p");
-            newEl.innerHTML = object.question[0].name;
-            quest.appendChild(newEl);
+          //  newEl.innerHTML = object.question.name;
+            //quest.appendChild(newEl);
 
         }
     };

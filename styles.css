@@ -1,5 +1,8 @@
-#formTH{
+#treasureHunts{
     display: block;
+}
+#formTH{
+    display: none;
 }
 h1{
     font-family: "Bell MT", sans-serif ;
