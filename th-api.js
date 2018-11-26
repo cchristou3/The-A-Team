@@ -28,14 +28,19 @@ function getChallenges() {
                 var linkItem = document.createElement("a");
                 linkItem.innerHTML = object.treasureHunts[i].name;
                 newItem.id = "#myLink";
-                linkItem.href = "https://codecyprus.org/th/api/start?player=Homer&app=simpsons&treasure-hunt-id="+object.treasureHunts[i].uuid; //TODO REPLACE
+                linkItem.href ="#";
+
+                //linkItem.href = "https://codecyprus.org/th/api/start?player=Homer&app=simpsons&treasure-hunt-id="+object.treasureHunts[i].uuid; //TODO REPLACE
                 newItem.appendChild(linkItem);
                 challengesList.appendChild(newItem);
-                //  var e = document.getElementById("#myLink");
-               //   e.onclick = submit;
+                var e = document.getElementById("#myLink");
+                e.onclick = submit;
 
                 //  console.log(object.treasureHunts[i].name);
             }
+            document.cookie = "uuid"+object.treasureHunts[0].uuid;
+            console.log(getCookies(uuid));
+
         }
         else {
             //TODO If response not received (error).
@@ -46,11 +51,14 @@ function getChallenges() {
     xhttp.open("Get", "https://codecyprus.org/th/api/list", true);
     xhttp.send();
 }
+// need to save the session when a link is clicked
 getChallenges();
 
 function submit()
 {
     document.getElementById("formTH").style.display = "block";
+    document.getElementById("treasureHunts").style.display= "none";
+
 }
 var quest = document.getElementById("QuestionArea");
 var session;
