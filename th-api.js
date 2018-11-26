@@ -34,10 +34,13 @@ function getChallenges() {
                 newItem.appendChild(linkItem);
                 challengesList.appendChild(newItem);
                 var e = document.getElementById("#myLink");
-                e.onclick = getQuestions();
+                e.onclick = submit;
 
                 //  console.log(object.treasureHunts[i].name);
             }
+            document.cookie = "uuid"+object.treasureHunts[0].uuid;
+            console.log(getCookies(uuid));
+
         }
         else {
             //TODO If response not received (error).
@@ -48,13 +51,14 @@ function getChallenges() {
     xhttp.open("Get", "https://codecyprus.org/th/api/list", true);
     xhttp.send();
 }
+// need to save the session when a link is clicked
 getChallenges();
 
 function submit()
 {
     document.getElementById("formTH").style.display = "block";
     document.getElementById("treasureHunts").style.display= "none";
-    console.log(this.response)
+
 }
 var quest = document.getElementById("QuestionArea");
 var session;
@@ -66,8 +70,8 @@ function getQuestions() {
             let object = JSON.parse(this.responseText);
             session = getPara("session");
             let newEl = document.createElement("p");
-          //  newEl.innerHTML = object.question.name;
-            //quest.appendChild(newEl);
+            newEl.innerHTML = object.question[0].name;
+            quest.appendChild(newEl);
 
         }
     };
