@@ -127,7 +127,7 @@ body {background: url("background.jpeg") no-repeat;}
     opacity: 0.8;
     filter: alpha(opacity=60);
 }
-#Boolean,#Numbers,#Select,#Text{
+#Boolean,#Numbers,#Select,#Text,#Numeric{
     display:none;
 }
 
