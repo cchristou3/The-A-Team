@@ -108,6 +108,7 @@ function answer()
         arrayX.push(v);
         console.log(arrayX);
     }
+    //setCookie,getCookie,checkCookies from w3Schools.com
    function setCookie(Cookiename,value,exday){
   var a = new Date();
   a.setTime(a.getTime() + (exday*24*60*60*1000));
