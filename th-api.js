@@ -29,6 +29,7 @@ function getChallenges() {
                 var linkItem = document.createElement("a");
                 linkItem.innerHTML = object.treasureHunts[i].name;
                 newItem.id = "#myLink";
+                //newItem.id = "#myLink"; +i;
                 linkItem.href ="#";
 
                 //linkItem.href = "https://codecyprus.org/th/api/start?player=Homer&app=simpsons&treasure-hunt-id="+object.treasureHunts[i].uuid; //TODO REPLACE
@@ -38,16 +39,21 @@ function getChallenges() {
 
                 //  console.log(object.treasureHunts[i].name);
             }
-            var e = document.getElementById("#myLink");
-            e.onclick = submit;
+            let e = document.getElementById("#myLink");
+            e.onclick = function(){
+                document.getElementById("formTH").style.display = "block";
+                document.getElementById("treasureHuntsList").style.display= "none";
+            };
             document.cookie = "uuid"+object.treasureHunts[0].uuid;
-            console.log(getCookie(object.treasureHunts[0].uuid));
+            console.log(document.cookie);
+            console.log(getCookie("uuid"));
+
 
         }
         else {
             //TODO If response not received (error).
             // Need to run without Internet connection to be tested
-            console.error("message");
+            console.log("message");
         }
     };
     xhttp.open("Get", "https://codecyprus.org/th/api/list", true);
@@ -56,12 +62,6 @@ function getChallenges() {
 // need to save the session when a link is clicked
 getChallenges();
 
-function submit()
-{
-    document.getElementById("formTH").style.display = "block";
-    document.getElementById("treasureHunts").style.display= "none";
-
-}
 var quest = document.getElementById("QuestionArea");
 var session;
 function getQuestions() {
@@ -120,7 +120,7 @@ function getCookie(Cookiename){
     var CookieArray = decodedCookie.split(';');
     for (var a=0; a<CookieArray.length; a++)
     {
-    var v=CookieArray[i];
+    var v=CookieArray[a];
     while(v.charAt(0)=== ' '){
         v=v.substring(1);
     }
