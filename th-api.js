@@ -1,12 +1,12 @@
 const TH_API_URL = "https://codecyprus.org/th/api/"; // the API base url
 
 // object
-let x = {
+let details = {
     name: "",
     score:""
 };
 // array that contains objects
-let arrayX = [
+let arrayDetails = [
     {name:"",score:""}
 ];
 
@@ -85,7 +85,8 @@ function start(getName,getApp) {
     xhttp.send();
 }
 
-
+//-------------------------------------------------------------------------------------------//
+// Get A question function
 var quest = document.getElementById("QuestionArea");
 var session;
 function getQuestions() {
@@ -93,7 +94,7 @@ function getQuestions() {
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             console.log(this.responseText);
-            let object = JSON.parse(this.responseText);
+            var object = JSON.parse(this.responseText);
             session = getParameter("session");
             let newEl = document.createElement("p");
             newEl.innerHTML = object.question[0].name;
@@ -109,6 +110,7 @@ function getQuestions() {
     xhttp.send();
 }
 
+//-------------------------------------------------------------------------------------------//
 // Still needs work
 // Gets the parameter in the url
     function getParameters() {
@@ -121,14 +123,9 @@ function getQuestions() {
         console.log(getApp);
     }
 
-// Still needs work
-// Put all player names in an array
-    function getInfo() {
-        let v = document.getElementById("formInput").value;
-        console.log("v: " + v);
-        arrayX.push(v);
-        console.log(arrayX);
-    }
+
+//-------------------------------------------------------------------------------------------//
+
     //setCookie,getCookie,checkCookies from w3Schools.com
    function setCookie(Cookiename,value,exday){
   let a = new Date();
@@ -136,6 +133,7 @@ function getQuestions() {
  let expires="expires="+ a.toUTCString();
  document.cookie= Cookiename+"="+ value +";"+ expires+";path=/";
  }
+
 function getCookie(Cookiename){
     let name=Cookiename +"=";
     let decodedCookie = decodeURIComponent(document.cookie);
@@ -163,9 +161,11 @@ function checkCookie() {
         }
     }
 }
-//-----------------------------------------------------------------//
+
+//-------------------------------------------------------------------------------------------//
 // Code was taken from https://www.w3schools.com/html/html5_geolocation.asp
 // This function's goal is to capture the users location
+var x = document.getElementById("demo"); // x is where to show the location in the website
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
@@ -179,6 +179,7 @@ function showPosition(position) {
     x.innerHTML="Latitude: " + position.coords.latitude +
         "<br>Longitude: " + position.coords.longitude;
 }
+
 function showError(error) {
     switch(error.code) {
         case error.PERMISSION_DENIED:
@@ -190,7 +191,7 @@ function showError(error) {
         case error.TIMEOUT:
             x.innerHTML = "The request to get user location timed out.";
             break;
-        case error.UNKNOWN_ERROR:
+        default: // in case of an unknown error
             x.innerHTML = "An unknown error occurred.";
             break;
     }
