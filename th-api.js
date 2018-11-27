@@ -67,7 +67,7 @@ function getChallenges() {
     xhttp.open("Get", "https://codecyprus.org/th/api/list", true);
     xhttp.send();
 }
-getChallenges();
+
 
 //-----------------------------------------------------------------------------------------//
 // this function is responsible for loading a form. The user will be asked to complete  form with
@@ -86,6 +86,7 @@ function start(getName,getApp) {
 
           //  else
             console.log("1");
+            getQuestions();
                 //    window.location.href = "Questions.html";
         }
     };
