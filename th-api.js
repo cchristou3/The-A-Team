@@ -10,6 +10,8 @@ let arrayDetails = [
     {name:"",score:""}
 ];
 
+
+// The List loads
 var challengesList = document.getElementById("challenges");
 
 function getChallenges() {
@@ -28,8 +30,7 @@ function getChallenges() {
                 var newItem = document.createElement("li");
                 var linkItem = document.createElement("a");
                 linkItem.innerHTML = object.treasureHunts[i].name;
-                newItem.id = "#myLink";
-                //newItem.id = "#myLink"; +i;
+                newItem.id = "#myLink"+i;
                 linkItem.href ="#";
                 console.log("1223");
                 //linkItem.href = "https://codecyprus.org/th/api/start?player=Homer&app=simpsons&treasure-hunt-id="+object.treasureHunts[i].uuid; //TODO REPLACE
@@ -39,11 +40,18 @@ function getChallenges() {
 
                 //  console.log(object.treasureHunts[i].name);
             }
-            let e = document.getElementById("#myLink");
+            // We use for loop to make sure all treasureHunts
+            for (let i = 0;i<object.treasureHunts.length;i++)
+            {
+                var e = document.getElementById("#myLink"+i);
+            }
+            // when user clicks on a treasure Hunts, a form appears while the list disappears
             e.onclick = function(){
+                console.log(getParameters());
                 document.getElementById("formTH").style.display = "block";
                 document.getElementById("treasureHuntsList").style.display= "none";
             };
+            // The cookie saves the session
             document.cookie = "uuid"+object.treasureHunts[0].uuid;
             console.log(document.cookie);
             console.log(getCookie("uuid"));
@@ -58,7 +66,6 @@ function getChallenges() {
     xhttp.open("Get", "https://codecyprus.org/th/api/list", true);
     xhttp.send();
 }
-// need to save the session when a link is clicked
 getChallenges();
 
 //-----------------------------------------------------------------------------------------//
@@ -118,7 +125,7 @@ function getQuestions() {
     //    return url.searchParams.get("parameter");
         let getName  = document.getElementById("playerName");
         let getApp  = document.getElementById("appName");
-        start(getName.value,getApp.value);
+      //  start(getName.value,getApp.value);
         console.log(getName);
         console.log(getApp);
     }
@@ -128,10 +135,10 @@ function getQuestions() {
 
     //setCookie,getCookie,checkCookies from w3Schools.com
    function setCookie(Cookiename,value,exday){
-  let a = new Date();
-  a.setTime(a.getTime() + (exday*24*60*60*1000));
- let expires="expires="+ a.toUTCString();
- document.cookie= Cookiename+"="+ value +";"+ expires+";path=/";
+    let a = new Date();
+    a.setTime(a.getTime() + (exday*24*60*60*1000));
+    let expires="expires="+ a.toUTCString();
+    document.cookie= Cookiename+"="+ value +";"+ expires+";path=/";
  }
 
 function getCookie(Cookiename){
