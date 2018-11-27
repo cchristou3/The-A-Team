@@ -21,12 +21,12 @@
 
     </ul>
 </div>
-<a href="Questions.html">Button</a>
+<!--<a href="Questions.html">Button</a> -->
 <div> <!-- This loads the form -->
-    <form action="Questions.html"  onsubmit ="getParameters();return false" id = "formTH"> <!-- action="javascript:getInfo()" -->
-        <p>Player name:<input id="playerName" type="text" name="Pname"></p>
-        <p>App name:<input id="appName" type="text"  name="Aname"></p>
-        <button type="submit">Button</button>
+    <form action="Questions.html"  id = "formTH"> <!-- action="javascript:getInfo()" -->
+        <p>Player name:<input id="playerName" type="text" name="Player"></p>
+        <p>App name:<input id="appName" type="text"  name="App"></p>
+        <button type="submit" onsubmit="getParameters()">Button</button>
     </form>
 </div>
 <!--Help Button -->
