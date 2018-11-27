@@ -20,7 +20,7 @@ Also discussed initial planning and outline for the web app development. Initial
 created placeholder pages for further development. Last, started keeping meeting records.
 
 Week 2(Nov 19th)
-Attendance:Antonis,Charalambos
+Attendance:Antonis,Charalambos,Christodoulos
 Check everyone's progress and discuss about problems and if everything is going well assign everyone new tasks.
 Trying to work with the functions
 
@@ -33,5 +33,6 @@ Week 3(Nov 26th)
 Attendance:Antonis,Charalambos,Christodoulos
 Working on the assignment. Trying to implement cookies and fix some functions.
 
-
-
+Week 3(Nov 27th)
+Attendance:Antonis,Charalambos,Christodoulos
+Working on the assignment. Working with the functions,how to delete cookies and also trying to find a way with sessions
