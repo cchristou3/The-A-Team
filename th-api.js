@@ -44,13 +44,14 @@ function getChallenges() {
             for (let i = 0;i<object.treasureHunts.length;i++)
             {
                 var e = document.getElementById("#myLink"+i);
+                // when user clicks on a treasure Hunts, a form appears while the list disappears
+                e.onclick = function(){
+                    console.log(getParameters());
+                    document.getElementById("formTH").style.display = "block";
+                    document.getElementById("treasureHuntsList").style.display= "none";
             }
-            // when user clicks on a treasure Hunts, a form appears while the list disappears
-            e.onclick = function(){
-                console.log(getParameters());
-                document.getElementById("formTH").style.display = "block";
-                document.getElementById("treasureHuntsList").style.display= "none";
-            };
+
+            }
             // The cookie saves the session
             document.cookie = "uuid"+object.treasureHunts[0].uuid;
             console.log(document.cookie);
@@ -88,7 +89,7 @@ function start(getName,getApp) {
                 //    window.location.href = "Questions.html";
         }
     };
-    xhttp.open("Get", "https://codecyprus.org/th/api/start?"+"Plaer="+getName+"&App="+getApp+"&treasure-hunt-id="+getCookie("uuid"), true);
+    xhttp.open("Get", "https://codecyprus.org/th/api/start?"+"Player="+getName+"&App="+getApp+"&treasure-hunt-id="+getCookie("uuid"), true);
     xhttp.send();
 }
 
@@ -125,6 +126,7 @@ function getQuestions() {
     //    return url.searchParams.get("parameter");
         let getName  = document.getElementById("playerName");
         let getApp  = document.getElementById("appName");
+
       //  start(getName.value,getApp.value);
         console.log(getName);
         console.log(getApp);
