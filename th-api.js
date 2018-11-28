@@ -46,7 +46,8 @@ function getChallenges() {
                 var e = document.getElementById("#myLink"+i);
                 // when user clicks on a treasure Hunts, a form appears while the list disappears
                 e.onclick = function(){
-                    document.cookie = "uuid="+object.treasureHunts[i].uuid;
+                    setCookie("session", object.treasureHunts[i].uuid, 365);
+                    // document.cookie = "uuid="+object.treasureHunts[i].uuid;
                     // The cookie saves the session
                     console.log(document.cookie);
 
