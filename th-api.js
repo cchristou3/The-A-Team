@@ -22,7 +22,7 @@ function getChallenges() {
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
-            console.log(this.responseText);
+          //  console.log(this.responseText);
             let object = JSON.parse(this.responseText);
             console.log("STATUS ==> "+object.status);
             for (let i = 0;i<object.treasureHunts.length;i++)
@@ -50,7 +50,6 @@ function getChallenges() {
                     // The cookie saves the session
                     console.log(document.cookie);
 
-                    getParameters();
                     document.getElementById("formTH").style.display = "block";
                     document.getElementById("treasureHuntsList").style.display= "none";
                }
@@ -64,7 +63,7 @@ function getChallenges() {
             console.log("message");
         }
     };
-    xhttp.open("Get", "https://codecyprus.org/th/api/list", true);
+    xhttp.open("GET", "https://codecyprus.org/th/api/list", true);
     xhttp.send();
 }
 
@@ -75,26 +74,25 @@ function getChallenges() {
 function start(getName,getApp) {
     //  make change style of form to "block" via javascript
     // document.getElementById("formTH").style.display = "none";
-    xhttp = new XMLHttpRequest();
+    var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             console.log(this.responseText);
-            let object = JSON.parse(this.responseText);
-            if (object.status === "ERROR")
-            {
-                console.log(object.errorMessages);
+             let object = JSON.parse(this.responseText);
+            if (object.status === "ERROR") {
+                alert(object.errorMessages);
             }
             else {
                 document.cookie = "session=" + object.session;
+                window.location.href = "Questions.html";
             }
-
         }
         else
         {
             //TODO ERROR MESSAGE
         }
     };
-    xhttp.open("Get", "https://codecyprus.org/th/api/start?"+"Player="+getName+"&App="+getApp+"&treasure-hunt-id="+getCookie("uuid"), true);
+    xhttp.open("GET", "https://codecyprus.org/th/api/start?player=" + getName + "&app=" + getApp + "&treasure-hunt-id=" + getCookie("uuid"), true);
     xhttp.send();
 }
 
@@ -105,11 +103,11 @@ function getQuestions() {
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
-            console.log(this.responseText);
+          //  console.log(this.responseText);
             console.log("2345");
             object = JSON.parse(this.responseText);
             console.log(object);
-            checkCookie();
+
             // when treasurehunt is over go to leaderboard
             if (object.currentQuestionIndex === object.numOfQuestions)
             {
@@ -155,7 +153,7 @@ function getQuestions() {
         }
 
     };
-    xhttp.open("Get", "https://codecyprus.org/th/api/question?session="+getCookie("session"), true);
+    xhttp.open("GET", "https://codecyprus.org/th/api/question?session=" + getCookie("session"), true);
     xhttp.send();
 }
 //function getSession()
@@ -167,16 +165,12 @@ function getQuestions() {
 // Still needs work
 // Gets the parameter in the url
     function getParameters() {
-
+        console.log("INSIDE GET PARAMETERS");
         let getName  = document.getElementById("playerName");
         let getApp  = document.getElementById("appName");
-        if (getName.value==="")
-            prompt("You forgot to put your name");
-        if (getApp)
-            prompt("You forgot to put the app's name");
-        start(getName.value,getApp.value);
         console.log(getName);
         console.log(getApp);
+        start(getName.value,getApp.value);
     }
 
 
