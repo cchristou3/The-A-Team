@@ -100,8 +100,10 @@ function getQuestions() {
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             console.log("GET QUESTION RESPONSE --> " + this.responseText);
-             let object = JSON.parse(this.responseText);
+            let object = JSON.parse(this.responseText);
             console.log(object);
+
+
             //
             // // when treasurehunt is over go to leaderboard
             // if (object.currentQuestionIndex === object.numOfQuestions)
