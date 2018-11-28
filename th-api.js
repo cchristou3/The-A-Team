@@ -50,9 +50,6 @@ function getChallenges() {
                     // document.cookie = "uuid="+object.treasureHunts[i].uuid;
                     // The cookie saves the session
                     console.log(document.cookie);
-
-                    document.getElementById("formTH").style.display = "block";
-                    document.getElementById("treasureHuntsList").style.display= "none";
                }
 
             }
@@ -73,9 +70,8 @@ function getChallenges() {
 // this function is responsible for loading a form. The user will be asked to complete  form with
 // Name, App name  -> onSubmit he will be redirected to the game based on his "progress"
 function start(getName,getApp) {
-console.log("START");
-    //  make change style of form to "block" via javascript
-    // document.getElementById("formTH").style.display = "none";
+console.log("START started");
+
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
@@ -87,7 +83,7 @@ console.log("START");
             // }
             // else {
             //     document.cookie = "session=" + object.session;
-            //     window.location.href = "Questions.html";
+                 window.location.href = "Questions.html";
             // }
         }
         else
@@ -97,13 +93,14 @@ console.log("START");
     };
     xhttp.open("GET", "https://codecyprus.org/th/api/start?player=" + getName + "&app=" + getApp + "&treasure-hunt-id=" + getCookie("session"), true);
     xhttp.send();
-    console.log("START");
+    console.log("START ended");
 }
 
 //-------------------------------------------------------------------------------------------//
 // Get A question function
 
 function getQuestions() {
+    console.log("Question started");
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
@@ -159,17 +156,20 @@ function getQuestions() {
     };
     xhttp.open("GET", "https://codecyprus.org/th/api/question?session=" + getCookie("session"), true);
     xhttp.send();
+    console.log("Question ended");
 }
+
 //function getSession()
 //{
  //   let url = new URL(window.location.href);
   //  return url.searchParams.get("session");
 //}
+
 //-------------------------------------------------------------------------------------------//
 // Still needs work
 // Gets the parameter in the url
     function getParameters() {
-        console.log("INSIDE GET PARAMETERS");
+        console.log("GET PARAMETERS");
         let getName  = document.getElementById("playerName");
         let getApp  = document.getElementById("appName");
         console.log(getName);
