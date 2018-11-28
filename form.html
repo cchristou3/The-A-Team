@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+
+<div> <!-- This loads the form -->
+    <form   id = "formTH"> <!-- action="javascript:getInfo()" -->
+        <p>Player name:<input id="playerName" type="text" name="Player"></p>
+        <p>App name:<input id="appName" type="text"  name="App"></p>
+        <button type="submit" onclick="getParameters()">Submit</button> <!-- promt message loads after a list is clicked -->
+    </form>
+</div>
+
+<script src="th-api.js"></script>
+</body>
+</html>

@@ -22,7 +22,7 @@ function getChallenges() {
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
-            console.log(this.responseText);
+          //  console.log(this.responseText);
             let object = JSON.parse(this.responseText);
             console.log("STATUS ==> "+object.status);
             for (let i = 0;i<object.treasureHunts.length;i++)
@@ -31,7 +31,7 @@ function getChallenges() {
                 var linkItem = document.createElement("a");
                 linkItem.innerHTML = object.treasureHunts[i].name;
                 newItem.id = "#myLink"+i;
-                linkItem.href ="#";
+                linkItem.href ="form.html";
                 console.log("1223");
                 //linkItem.href = "https://codecyprus.org/th/api/start?player=Homer&app=simpsons&treasure-hunt-id="+object.treasureHunts[i].uuid; //TODO REPLACE
                 newItem.appendChild(linkItem);
@@ -46,12 +46,11 @@ function getChallenges() {
                 var e = document.getElementById("#myLink"+i);
                 // when user clicks on a treasure Hunts, a form appears while the list disappears
                 e.onclick = function(){
-                    document.cookie = "uuid"+object.treasureHunts[i].uuid;
+                    setCookie("session", object.treasureHunts[i].uuid, 365);
+                    // document.cookie = "uuid="+object.treasureHunts[i].uuid;
                     // The cookie saves the session
                     console.log(document.cookie);
-                    console.log(getCookie("uuid"));
 
-                    console.log(getParameters());
                     document.getElementById("formTH").style.display = "block";
                     document.getElementById("treasureHuntsList").style.display= "none";
                }
@@ -65,7 +64,7 @@ function getChallenges() {
             console.log("message");
         }
     };
-    xhttp.open("Get", "https://codecyprus.org/th/api/list", true);
+    xhttp.open("GET", "https://codecyprus.org/th/api/list", true);
     xhttp.send();
 }
 
@@ -74,73 +73,108 @@ function getChallenges() {
 // this function is responsible for loading a form. The user will be asked to complete  form with
 // Name, App name  -> onSubmit he will be redirected to the game based on his "progress"
 function start(getName,getApp) {
+console.log("START");
     //  make change style of form to "block" via javascript
     // document.getElementById("formTH").style.display = "none";
-    xhttp = new XMLHttpRequest();
+    var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             console.log(this.responseText);
-            let object = JSON.parse(this.responseText);
-            console.log(object.session);
-            // TODO Check for errors
-
-          //  else
-            console.log("1");
-
+             let object = JSON.parse(this.responseText);
+           console.log(this.responseText);
+            // if (object.status === "ERROR") {
+            //     alert(object.errorMessages);
+            // }
+            // else {
+            //     document.cookie = "session=" + object.session;
+            //     window.location.href = "Questions.html";
+            // }
+        }
+        else
+        {
+            //TODO ERROR MESSAGE
         }
     };
-    xhttp.open("Get", "https://codecyprus.org/th/api/start?"+"Player="+getName+"&App="+getApp+"&treasure-hunt-id="+getCookie("uuid"), true);
+    xhttp.open("GET", "https://codecyprus.org/th/api/start?player=" + getName + "&app=" + getApp + "&treasure-hunt-id=" + getCookie("session"), true);
     xhttp.send();
+    console.log("START");
 }
 
 //-------------------------------------------------------------------------------------------//
 // Get A question function
-var quest = document.getElementById("QuestionArea");
-var session;
+
 function getQuestions() {
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
-            console.log(this.responseText);
+          //  console.log(this.responseText);
             console.log("2345");
-            let object = JSON.parse(this.responseText);
+            object = JSON.parse(this.responseText);
             console.log(object);
+
+            // when treasurehunt is over go to leaderboard
             if (object.currentQuestionIndex === object.numOfQuestions)
             {
                 //https://stackoverflow.com/questions/2144386/how-to-delete-a-cookie
                 document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
                 //leaderboard();
             }
+
             if (object.requires-location===true)
             {
                 getLocation()
             }
             let quest = document.getElementById("QuestionArea");
-            
 
+            console.log(document.cookie);
+            quest.innerHTML = object.questionText;
+            console.log(object.errorMessages);
+
+            if (object.questionType === "MCQ")
+            {
+                document.getElementById("Select").style.display = "block";
+            }
+            if (object.questionType === "TEXT")
+            {
+                document.getElementById("Text").style.display = "block";
+            }
+            if (object.questionType === "INTEGER")
+            {
+                document.getElementById("Numbers").style.display = "block";
+            }
+            if (object.questionType === "BOOLEAN")
+            {
+                document.getElementById("boolean").style.display = "block";
+            }
+            if (object.questionType === "NUMERIC")
+            {
+                document.getElementById("Numeric").style.display = "block";
+            }
         }
-        //else
+        else {
             // Error message: TODO
-        //console.log(object.status);
-        //console.log(object.errorMessages);
+            //console.log(object.status);
+        }
+
     };
-    xhttp.open("Get", "https://codecyprus.org/th/api/question?+session="+getCookie("session"), true);
+    xhttp.open("GET", "https://codecyprus.org/th/api/question?session=" + getCookie("session"), true);
     xhttp.send();
 }
-
+//function getSession()
+//{
+ //   let url = new URL(window.location.href);
+  //  return url.searchParams.get("session");
+//}
 //-------------------------------------------------------------------------------------------//
 // Still needs work
 // Gets the parameter in the url
     function getParameters() {
-    //    let url = new URL(window.location.href);
-    //    return url.searchParams.get("parameter");
+        console.log("INSIDE GET PARAMETERS");
         let getName  = document.getElementById("playerName");
         let getApp  = document.getElementById("appName");
-
-        console.log("999999");
-        start(getName.value,getApp.value);
         console.log(getName);
         console.log(getApp);
+        start(getName.value,getApp.value);
     }
 
 
