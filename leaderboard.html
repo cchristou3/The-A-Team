@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leaderboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<!--https://portal.uclan.ac.uk/bbcswebdav/pid-3118914-dt-content-rid-3868655_1/courses/CO1111_201819_A_CY/CO1111-w09-lec-Testing.pdf-->
+<!--<script>th-api.js-->
+<!--const TH_API_URL = "https://codecyprus.org/th/api/"; // the API base url-->
+<!--/**-->
+<!--* This is a generic function to access the specified URL-->
+<!--* @param url the URL to be accessed-->
+<!--* @param listener the function to handle the async result-->
+<!--*/-->
+<!--function getUrl(url, listener) {-->
+<!--// create and invoke the http request-->
+<!--let httpRequest = new XMLHttpRequest();-->
+<!--httpRequest.onload = function () {-->
+<!--// assume this.status === 200 (preferably check in assignment)-->
+<!--// parse reply to JSON-->
+<!--let replyAsJSON = JSON.parse(this.responseText);-->
+<!--// asynchronously notify subscriber of fetched value as JSON object-->
+<!--listener(replyAsJSON);-->
+<!--};-->
+<!--httpRequest.open("GET", url, true); // open connection-->
+<!--httpRequest.send(); // issue GET command-->
+<!--}-->
+<!--let session = "ag9nfmNvZGVjeXBydXNvcmdyFAsSB1Nlc3Npb24YgICAoMa0gQoM";-->
+<!--let url = TH_API_URL + "leaderboard?sorted&session=" + session; // form url-->
+<!--getUrl(url, handleLeaderboard);-->
+<!--th-api.js (continued…)-->
+<!--const TH_API_URL = "https://codecyprus.org/th/api/"; // the API base url-->
+<!--/**-->
+<!--* A function to handle the JSON-formatted reply of '/leaderboard' call-->
+<!--*-->
+<!--* @param leaderboardAsJSON for an example of how leaderboard is encoded in JSON,-->
+<!--* see sample output of '/leaderboard’ at https://codecyprus.org/th#leaderboard-->
+<!--*/-->
+<!--function handleLeaderboard(leaderboardAsJSON) {-->
+<!--let leaderboardElement = document.getElementById('test-results-table’); // table-->
+<!--let html = ""; // used to include HTML code for the table rows-->
+<!--let leaderboardArray = leaderboardAsJSON['leaderboard'];-->
+<!--for(i in leaderboardArray) {-->
+<!--let entry = leaderboardArray[i];-->
+<!--html += "<tr>" +-->
+    <!--" <td>" + entry['player'] + "</td>" +-->
+    <!--" <td>" + entry['score'] + "</td>" +-->
+    <!--" <td>" + entry['completionTime'] + "</td>" +-->
+    <!--"</tr>";-->
+<!--}-->
+<!--leaderboardElement.innerHTML += html; // append generated HTML to existing-->
+<!--}-->
+<!--</script>-->
+
+</body>
+</html>
