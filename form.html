@@ -8,14 +8,21 @@
 </head>
 <body>
 
+    <div class="h1box">
+        <h1> The Treasure Hunt</h1>
+    </div>
 
-<div> <!-- This loads the form -->
-    <form   id = "formTH"> <!-- action="javascript:getInfo()" -->
-        <p>Player name:<input id="playerName" type="text" name="Player"></p>
-        <p>App name:<input id="appName" type="text"  name="App"></p>
-        <button type="submit" onclick="getParameters()">Submit</button> <!-- promt message loads after a list is clicked -->
-    </form>
-</div>
+    <h2 >Please fill in the form with your name!<br> Click on the "Begin" Button below to start hunting!</h2>
+
+    <img src="pirate.jpg" alt="Pirate" class="pirate" >
+
+    <div> <!-- This loads the form -->
+        <form   id = "formTH"> <!-- action="javascript:getInfo()" -->
+            <p>Player name:<input id="playerName" type="text" name="Player"></p>
+
+        <button type="submit" onclick="getParameters()">Begin</button> <!-- promt message loads after a list is clicked -->
+        </form>
+    </div>
 
 <script src="th-api.js"></script>
 </body>
