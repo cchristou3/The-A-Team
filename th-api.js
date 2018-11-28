@@ -69,7 +69,7 @@ function getChallenges() {
 //-----------------------------------------------------------------------------------------//
 // this function is responsible for loading a form. The user will be asked to complete  form with
 // Name, App name  -> onSubmit he will be redirected to the game based on his "progress"
-function start(getName,getApp) {
+function start(getName) {
 console.log("START started");
 
     var xhttp = new XMLHttpRequest();
@@ -91,7 +91,7 @@ console.log("START started");
             //TODO ERROR MESSAGE
         }
     };
-    xhttp.open("GET", "https://codecyprus.org/th/api/start?player=" + getName + "&app=" + getApp + "&treasure-hunt-id=" + getCookie("session"), true);
+    xhttp.open("GET", "https://codecyprus.org/th/api/start?player=" + getName + "&app=The-A-Team&treasure-hunt-id=" + getCookie("session"), true);
     xhttp.send();
     console.log("START ended");
 }
@@ -171,10 +171,8 @@ function getQuestions() {
     function getParameters() {
         console.log("GET PARAMETERS");
         let getName  = document.getElementById("playerName");
-        let getApp  = document.getElementById("appName");
         console.log(getName);
-        console.log(getApp);
-        start(getName.value,getApp.value);
+        start(getName.value);
     }
 
 
