@@ -36,3 +36,7 @@ Working on the assignment. Trying to implement cookies and fix some functions.
 Week 3(Nov 27th)
 Attendance:Antonis,Charalambos,Christodoulos
 Working on the assignment. Working with the functions,how to delete cookies and also trying to find a way with sessions
+
+Week 3(Nov 28th)
+Attendance:Antonis,Charalambos,Christodoulos
+Working on the assignment. Creating a new page,trying to get response from the server so we can move on!
