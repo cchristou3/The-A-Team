@@ -31,7 +31,7 @@ function getChallenges() {
                 var linkItem = document.createElement("a");
                 linkItem.innerHTML = object.treasureHunts[i].name;
                 newItem.id = "#myLink"+i;
-                linkItem.href ="#";
+                linkItem.href ="form.html";
                 console.log("1223");
                 //linkItem.href = "https://codecyprus.org/th/api/start?player=Homer&app=simpsons&treasure-hunt-id="+object.treasureHunts[i].uuid; //TODO REPLACE
                 newItem.appendChild(linkItem);
