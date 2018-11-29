@@ -30,8 +30,6 @@ h2{font-family:sans-serif;
     border:3px solid yellow;
     background-color: black;
     margin:20px;
-
-
 }
 h3{font-family:sans-serif;
     font-size:30px;
@@ -135,6 +133,16 @@ body {background: url("background.jpeg") no-repeat;}
 }
 #Select{
     display:none;
+}
+#QuestionArea
+{
+    font-family:sans-serif;
+    font-size:20px;
+    text-align:center;
+    color:white;
+    border:3px solid yellow;
+    background-color: black;
+    margin:20px;
 }
 
 

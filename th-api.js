@@ -116,11 +116,12 @@ function getQuestions() {
 
             if (object.requires-location===true)
             {
-                getLocation()
+                getLocation();
             }
             let quest = document.getElementById("QuestionArea");
 
             console.log(document.cookie);
+            console.log(object.questionText);
             quest.innerHTML = object.questionText;
             console.log(object.errorMessages);
 
@@ -138,7 +139,7 @@ function getQuestions() {
             }
             if (object.questionType === "BOOLEAN")
             {
-                document.getElementById("boolean").style.display = "block";
+                document.getElementById("Boolean").style.display = "block";
             }
             if (object.questionType === "NUMERIC")
             {
