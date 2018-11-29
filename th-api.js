@@ -48,7 +48,7 @@ function getChallenges() {
                     setCookie("session", object.treasureHunts[i].uuid, 365);
                     // document.cookie = "uuid="+object.treasureHunts[i].uuid;
                     // The cookie saves the session
-                    console.log(document.cookie);
+                    console.log("DOCUMENT COOKIE= "+document.cookie);
                 }
             }
         }
@@ -69,16 +69,17 @@ function getChallenges() {
 function start(getName) {
     console.log("START STARTED");
 
-    var xhttp = new XMLHttpRequest();
+    let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             console.log(this.responseText);
-            var jsonObject = JSON.parse(this.responseText);
-            if (jsonObject.status === "ERROR") {
+            var object = JSON.parse(this.responseText);
+            if (object.status === "ERROR") {
                 //TODO ERROR
             }
             else {
                 //TODO OK
+                document.cookie = "session=" + object.session;
                 window.location.href = "Questions.html";
             }
         }
@@ -104,45 +105,45 @@ function getQuestions() {
             console.log(object);
 
 
-            //
-            // // when treasurehunt is over go to leaderboard
-            // if (object.currentQuestionIndex === object.numOfQuestions)
-            // {
-            //     //https://stackoverflow.com/questions/2144386/how-to-delete-a-cookie
-            //     document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-            //     //leaderboard();
-            // }
-            //
-            // if (object.requires-location===true)
-            // {
-            //     getLocation()
-            // }
-            // let quest = document.getElementById("QuestionArea");
-            //
-            // console.log(document.cookie);
-            // quest.innerHTML = object.questionText;
-            // console.log(object.errorMessages);
-            //
-            // if (object.questionType === "MCQ")
-            // {
-            //     document.getElementById("Select").style.display = "block";
-            // }
-            // if (object.questionType === "TEXT")
-            // {
-            //     document.getElementById("Text").style.display = "block";
-            // }
-            // if (object.questionType === "INTEGER")
-            // {
-            //     document.getElementById("Numbers").style.display = "block";
-            // }
-            // if (object.questionType === "BOOLEAN")
-            // {
-            //     document.getElementById("boolean").style.display = "block";
-            // }
-            // if (object.questionType === "NUMERIC")
-            // {
-            //     document.getElementById("Numeric").style.display = "block";
-            // }
+
+            // when treasurehunt is over go to leaderboard
+            if (object.currentQuestionIndex === object.numOfQuestions)
+            {
+                //https://stackoverflow.com/questions/2144386/how-to-delete-a-cookie
+                document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+                //leaderboard();
+            }
+
+            if (object.requires-location===true)
+            {
+                getLocation()
+            }
+            let quest = document.getElementById("QuestionArea");
+
+            console.log(document.cookie);
+            quest.innerHTML = object.questionText;
+            console.log(object.errorMessages);
+
+            if (object.questionType === "MCQ")
+            {
+                document.getElementById("Select").style.display = "block";
+            }
+            if (object.questionType === "TEXT")
+            {
+                document.getElementById("Text").style.display = "block";
+            }
+            if (object.questionType === "INTEGER")
+            {
+                document.getElementById("Numbers").style.display = "block";
+            }
+            if (object.questionType === "BOOLEAN")
+            {
+                document.getElementById("boolean").style.display = "block";
+            }
+            if (object.questionType === "NUMERIC")
+            {
+                document.getElementById("Numeric").style.display = "block";
+            }
         }
         else {
             // Error message: TODO
@@ -242,4 +243,7 @@ function showError(error) {
 
 
 
-
+function getSession() {
+    let url = new URL(window.location.href);
+    return url.searchParams.get("session");
+}
