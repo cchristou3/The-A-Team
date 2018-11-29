@@ -22,16 +22,20 @@
 </div>
 
 <div id ="Select">
-    <table>
+    <form>
+        <table>
         <tr>
-            <th><button onclick="answer()">A</button></th>
-            <th><button onclick="answer()">B</button></th>
+            <th><input type='radio' name="answer" value="A">A</th>
+            <th><input type='radio' name="answer" value="B">B</th>
         </tr>
         <tr>
-            <th><button onclick="answer()">C</button></th>
-            <th><button onclick="answer()">D</button></th>
+            <th><input type='radio' name="answer" value="C">C</th>
+            <th><input type='radio' name="answer" value="D">D</th>
         </tr>
-    </table>
+        </table>
+        <input type="button" name="answerSubmitted" value="submit" onclick="Answer()">
+        <input type="button" name="skip" value="skip" onclick="skipQuestion()">
+    </form>
 </div>
 
 <div id = "Text">

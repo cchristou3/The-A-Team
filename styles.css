@@ -130,8 +130,11 @@ body {background: url("background.jpeg") no-repeat;}
     opacity: 0.8;
     filter: alpha(opacity=60);
 }
-#Boolean,#Numbers,#Select,#Text,#Numeric{
+#Boolean,#Numbers,#Text,#Numeric{
     display:none;
+}
+#Select{
+    display:block;
 }
 
 
