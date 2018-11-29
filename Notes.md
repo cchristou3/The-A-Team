@@ -40,3 +40,7 @@ Working on the assignment. Working with the functions,how to delete cookies and 
 Week 3(Nov 28th)
 Attendance:Antonis,Charalambos,Christodoulos
 Working on the assignment. Creating a new page,trying to get response from the server so we can move on!
+
+Week 3(Nov 29th)
+Attendance:Antonis,Charalambos,Christodoulos
+Since we have figure out how to GET the questions from the server now we are trying to fix the program so the user can answer appropriately each type of question and receive feedback from the server
