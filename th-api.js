@@ -4,11 +4,7 @@ const TH_API_URL = "https://codecyprus.org/th/api/"; // the API base url
 var challengesList = document.getElementById("challenges");
 
 function getChallenges() {
-    // This line makes sure the button disappears once it is pressed
-    //  document.getElementById("btn").style.display = "none";
-    // Implement code that adds "List of all treasuehunts" in the buttons place
-
-    xhttp = new XMLHttpRequest();
+    let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
             //  console.log(this.responseText);
@@ -31,7 +27,7 @@ function getChallenges() {
             // We use for loop to make sure all treasureHunts
             for (let i = 0;i<object.treasureHunts.length;i++)
             {
-                var e = document.getElementById("#myLink"+i);
+                let e = document.getElementById("#myLink"+i);
                 // when user clicks on a treasure Hunts, a form appears while the list disappears
                 e.onclick = function(){
                     setCookie("session", object.treasureHunts[i].uuid, 365);
@@ -57,12 +53,11 @@ function getChallenges() {
 // Name, App name  -> onSubmit he will be redirected to the game based on his "progress"
 function start(getName) {
     console.log("START STARTED");
-    console.log(this.responseText);
-    var object = JSON.parse(this.responseText);
+    let object = JSON.parse(this.responseText);
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
-
+            console.log(this.responseText);
             if (object.status === "ERROR") {
                 //TODO ERROR
             }
@@ -86,14 +81,12 @@ function start(getName) {
 
 function getQuestions() {
     console.log("GET QUESTIONS STARTED");
-    xhttp = new XMLHttpRequest();
+    let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             console.log("GET QUESTION RESPONSE --> " + this.responseText);
             let object = JSON.parse(this.responseText);
             console.log(object);
-
-
 
             // when treasurehunt is over go to leaderboard
             if (object.completed === true)
@@ -146,7 +139,7 @@ function ansText()
 {
     console.log("ansText STARTED");
     let ans = getAnswerParameter();
-    xhttp = new XMLHttpRequest();
+    let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             console.log("GET ansText RESPONSE --> " + this.responseText);
@@ -164,7 +157,7 @@ function ansText()
 }
 // Shows the player name and his corresponding score
 function showScore() {
-    xhttp = new XMLHttpRequest();
+    let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             console.log("GET ansText RESPONSE --> " + this.responseText);
@@ -241,7 +234,6 @@ function checkCookie() {
 //-------------------------------------------------------------------------------------------//
 // Code was taken from https://www.w3schools.com/html/html5_geolocation.asp
 // This function's goal is to capture the users location
-var x = document.getElementById("demo"); // x is where to show the location in the website
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
