@@ -73,7 +73,7 @@ function start(getName) {
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             console.log(this.responseText);
-            var object = JSON.parse(this.responseText);
+            let object = JSON.parse(this.responseText);
             if (object.status === "ERROR") {
                 //TODO ERROR
             }
@@ -107,7 +107,7 @@ function getQuestions() {
 
 
             // when treasurehunt is over go to leaderboard
-            if (object.currentQuestionIndex === object.numOfQuestions)
+            if (object.completed === true)
             {
                 //https://stackoverflow.com/questions/2144386/how-to-delete-a-cookie
                 document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
@@ -163,18 +163,24 @@ function ansText()
         if (this.readyState === 4 && this.status === 200) {
             console.log("GET ansText RESPONSE --> " + this.responseText);
             let object = JSON.parse(this.responseText);
+            console.log("JSON.parse(this.responseText)"+object);
+            console.log(object.correct);
             if (object.correct === true)
             {
                 location.reload();
             }else
-                alert("Wrong Answer!, Try again");
+                alert("Wrong Answer!, You lose 3 points, Try again");
             showScore();
         }
     };
+    console.log("https://codecyprus.org/th/api/answer?session=" + getCookie("session")+"&answer="+ans);
     xhttp.open("GET", "https://codecyprus.org/th/api/answer?session=" + getCookie("session")+"&answer="+ans, true);
     xhttp.send();
+    console.log("ansText ENDED");
+
 }
 function showScore() {
+    console.log("showScore STARTED");
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
@@ -185,11 +191,13 @@ function showScore() {
         }
         else
         {
+            console.log("ERROR MESSAGE!");
             //TODO ERROR MSG
         }
     };
     xhttp.open("GET", "https://codecyprus.org/th/api/score?session=" + getCookie("session"), true);
     xhttp.send();
+    console.log("showScore ENDED");
 }
 //function getSession()
 //{
@@ -253,7 +261,6 @@ function checkCookie() {
 //-------------------------------------------------------------------------------------------//
 // Code was taken from https://www.w3schools.com/html/html5_geolocation.asp
 // This function's goal is to capture the users location
-var x = document.getElementById("demo"); // x is where to show the location in the website
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
