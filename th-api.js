@@ -55,8 +55,8 @@ function start(getName) {
     console.log("START STARTED");
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
+        let object = JSON.parse(this.responseText);
         if (this.readyState === 4 && this.status === 200) {
-            let object = JSON.parse(this.responseText);
             console.log(this.responseText);
             if (object.status === "ERROR") {
                 //TODO ERROR
