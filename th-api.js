@@ -57,12 +57,11 @@ function getChallenges() {
 // Name, App name  -> onSubmit he will be redirected to the game based on his "progress"
 function start(getName) {
     console.log("START STARTED");
-    console.log(this.responseText);
-    var object = JSON.parse(this.responseText);
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
-
+            console.log(this.responseText);
+            let object = JSON.parse(this.responseText);
             if (object.status === "ERROR") {
                 //TODO ERROR
             }
