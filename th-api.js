@@ -1,16 +1,5 @@
 const TH_API_URL = "https://codecyprus.org/th/api/"; // the API base url
 
-// object
-let details = {
-    name: "",
-    score:""
-};
-// array that contains objects
-let arrayDetails = [
-    {name:"",score:""}
-];
-
-
 // The List loads
 var challengesList = document.getElementById("challenges");
 
@@ -68,12 +57,12 @@ function getChallenges() {
 // Name, App name  -> onSubmit he will be redirected to the game based on his "progress"
 function start(getName) {
     console.log("START STARTED");
-
+    console.log(this.responseText);
+    var object = JSON.parse(this.responseText);
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
-            console.log(this.responseText);
-            var object = JSON.parse(this.responseText);
+
             if (object.status === "ERROR") {
                 //TODO ERROR
             }
@@ -84,7 +73,7 @@ function start(getName) {
             }
         }
         else {
-            //TODO ERROR MESSAGE
+            alert(object.errorMessages);
         }
     };
     xhttp.open("GET", "https://codecyprus.org/th/api/start?player=" + getName + "&app=The-A-Team&treasure-hunt-id=" + getCookie("session"), true);
@@ -107,7 +96,7 @@ function getQuestions() {
 
 
             // when treasurehunt is over go to leaderboard
-            if (object.currentQuestionIndex === object.numOfQuestions)
+            if (object.completed === true)
             {
                 //https://stackoverflow.com/questions/2144386/how-to-delete-a-cookie
                 document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
@@ -123,7 +112,6 @@ function getQuestions() {
             console.log(document.cookie);
             console.log(object.questionText);
             quest.innerHTML = object.questionText;
-            console.log(object.errorMessages);
 
             if (object.questionType === "MCQ")
             {
@@ -147,14 +135,52 @@ function getQuestions() {
             }
         }
         else {
-            // Error message: TODO
-            //console.log(object.status);
+            console.log(object.status);
         }
 
     };
     xhttp.open("GET", "https://codecyprus.org/th/api/question?session=" + getCookie("session"), true);
     xhttp.send();
 }
+function ansText()
+{
+    console.log("ansText STARTED");
+    let ans = getAnswerParameter();
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            console.log("GET ansText RESPONSE --> " + this.responseText);
+            let object = JSON.parse(this.responseText);
+            if (object.correct === true)
+            {
+                location.reload();
+            }else
+                alert("Wrong Answer!, Try again");
+                showScore();
+            }
+        };
+        xhttp.open("GET", "https://codecyprus.org/th/api/answer?session=" + getCookie("session")+"&answer="+ans, true);
+        xhttp.send();
+}
+// Shows the player name and his corresponding score
+function showScore() {
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            console.log("GET ansText RESPONSE --> " + this.responseText);
+            let object = JSON.parse(this.responseText);
+            let divScore = document.getElementById("playerScore");
+            divScore.innerHTML = "<p> Player: " + object.player + "  Score: " + object.score + "</p>";
+        }
+        else
+        {
+            //TODO ERROR MSG
+        }
+    };
+    xhttp.open("GET", "https://codecyprus.org/th/api/score?session=" + getCookie("session"), true);
+    xhttp.send();
+}
+
 //function getSession()
 //{
 //   let url = new URL(window.location.href);
@@ -163,9 +189,14 @@ function getQuestions() {
 //-------------------------------------------------------------------------------------------//
 // Still needs work
 // Gets the parameter in the url
-function getParameters() {
+function getPlayerName() {
     let getName  = document.getElementById("playerName");
     start(getName.value);
+}
+function getAnswerParameter() {
+    let getAnswer = document.getElementById("answerText");
+    return getAnswer.value;
+
 }
 
 
@@ -176,7 +207,7 @@ function setCookie(Cookiename,value,exday){
     let a = new Date();
     a.setTime(a.getTime() + (exday*24*60*60*1000));
     let expires="expires="+ a.toUTCString();
-    document.cookie= Cookiename+"="+ value +";"+ expires+";path=/";
+    document.cook#ie= Cookiename+"="+ value +";"+ expires+";path=/";
 }
 
 function getCookie(Cookiename){
@@ -223,6 +254,7 @@ function showPosition(position) {
     var x = document.getElementById("QuestionArea");
     x.innerHTML="Latitude: " + position.coords.latitude +
         "<br>Longitude: " + position.coords.longitude;
+    console.log("Latitude: " + position.coords.latitude);
 }
 
 function showError(error) {
@@ -242,9 +274,3 @@ function showError(error) {
     }
 }
 
-
-
-function getSession() {
-    let url = new URL(window.location.href);
-    return url.searchParams.get("session");
-}
