@@ -207,7 +207,7 @@ function setCookie(Cookiename,value,exday){
     let a = new Date();
     a.setTime(a.getTime() + (exday*24*60*60*1000));
     let expires="expires="+ a.toUTCString();
-    document.cook#ie= Cookiename+"="+ value +";"+ expires+";path=/";
+    document.cookie= Cookiename+"="+ value +";"+ expires+";path=/";
 }
 
 function getCookie(Cookiename){
