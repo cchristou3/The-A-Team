@@ -18,6 +18,7 @@ h1{
     margin: 20px;
     background-color: #ffffff;
     border: 3px solid yellow;
+    border-radius: 20px;
     opacity: 0.6;
     filter: alpha(opacity=60);
 }
@@ -30,23 +31,53 @@ h2{font-family:sans-serif;
     border:3px solid yellow;
     background-color: black;
     margin:20px;
+
 }
 h3{font-family:sans-serif;
     font-size:30px;
     text-align:center;
     color :white;}
 
-body {background: url("background.jpeg") no-repeat;}
+body {background: url("shipphotoshop.jpg") repeat;
+    max-height: 1366px;
+    max-width: 1024px;
 
+}
+
+
+/* Text cloud */
+
+.cloudtext{
+    font-weight: lighter;
+    font-family:sans-serif;
+    font-size:15px;
+    position: relative;
+    text-align: center;
+    color: black;
+
+    }
+.centered {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.cloud{
+    width:70%;
+    height: 60%;
+}
+/*Pirate Image*/
 
 .pirate {
 
     display: block;
     margin: 30px auto;
-    width: 200px;
-    height: 180px;
+    width: 45%;
+    height: 50%;
+
 }
 
+/*Button Begin*/
 .begin{
     display: block;
     background-color: green;
@@ -72,6 +103,7 @@ body {background: url("background.jpeg") no-repeat;}
     transform: translateY(4px);
 }
 .help{
+
     text-align: center;
     display:block;
     background-color: green;
@@ -94,11 +126,11 @@ body {background: url("background.jpeg") no-repeat;}
 
     padding: 20px;
     font-size: 30px;
-    width: 20px;
+    width: 10%;
     text-align: center;
     text-decoration: none;
     float: left;
-    height:24px;
+    height:25%;
     margin-top: 30px;
     margin-left: 10px;
 }
@@ -127,6 +159,8 @@ body {background: url("background.jpeg") no-repeat;}
     border: 3px solid yellow;
     opacity: 0.8;
     filter: alpha(opacity=60);
+    border-radius: 20px
+;
 }
 #Boolean,#Numbers,#Text,#Numeric{
     display:none;
@@ -134,16 +168,31 @@ body {background: url("background.jpeg") no-repeat;}
 #Select{
     display:none;
 }
-#QuestionArea
-{
+.challenges{
+
     font-family:sans-serif;
     font-size:20px;
     text-align:center;
     color:white;
-    border:3px solid yellow;
+    border: 5px solid darkgoldenrod;
     background-color: black;
     margin:20px;
+    width: 250px;
+
 }
+.playerName{
+    font-family: "Bell MT", sans-serif;
+    font-size: 20px;
+    text-align: center;
+    color: white;
+    background-color: white;
+    border: 3px solid darkgoldenrod;
+    opacity: 0.8;
+    filter: alpha(opacity=60);
+    border-radius: 20px;
+    margin-left: 20%;
+}
+
 
 
 
