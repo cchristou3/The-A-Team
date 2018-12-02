@@ -200,8 +200,11 @@ function showScore() {
 // Still needs work
 // Gets the parameter in the url
 function getParameters() {
+    console.log("GETPARAMETERS START");
     let getName  = document.getElementById("playerName");
+    console.log(getName.value);
     start(getName.value);
+    console.log("GETPARAMETERS END");
 }
 function getAnswerParameter() {
     let getAnswer = document.getElementById("answerText");
