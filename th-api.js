@@ -1,15 +1,5 @@
 const TH_API_URL = "https://codecyprus.org/th/api/"; // the API base url
 
-// object
-let details = {
-    name: "",
-    score:""
-};
-// array that contains objects
-let arrayDetails = [
-    {name:"",score:""}
-];
-
 
 // The List loads
 var challengesList = document.getElementById("challenges");
@@ -320,6 +310,20 @@ function getAnswerBooleanParameter() {
 
     return getAnswer.value;
 }
+function getAnswerMCQParameter() {
+    let getAnswer;
+    if (document.getElementById('answerT').checked) {
+        getAnswer = document.getElementById('answerT').value;
+        console.log("GET ANSWER==>"+getAnswer);
+    }
+    else if (document.getElementById('answerF').checked){
+        getAnswer = document.getElementById('answerF').value;
+        console.log("GET ANSWER==>"+getAnswer);
+    }
+    console.log("GET ANSWER============>"+getAnswer);
+
+    return getAnswer.value;
+}
 
 //-------------------------------------------------------------------------------------------//
 
@@ -414,4 +418,26 @@ function showError(error) {
             x.innerHTML = "An unknown error occurred.";
             break;
     }
+}
+
+
+function skipQuestion() {
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            //TODO If response received (success).
+            object = JSON.parse(this.responseText);
+            if (object.canBeSkipped === true) {
+                location.reload();
+            }
+            else {
+                alert("This question can not be skipped.")
+            }
+        }
+        else {
+            //TODO If response not received (error).
+        }
+    };
+    xhttp.open("GET", "https://codecyprus.org/th/api/question?session=" + getCookie("session"), true);
+    xhttp.send();
 }
