@@ -312,15 +312,19 @@ function getAnswerBooleanParameter() {
 }
 function getAnswerMCQParameter() {
     let getAnswer;
-    if (document.getElementById('answerT').checked) {
-        getAnswer = document.getElementById('answerT').value;
-        console.log("GET ANSWER==>"+getAnswer);
+    if (document.getElementById('answerA').checked) {
+        getAnswer = document.getElementById('answerA').value;
     }
-    else if (document.getElementById('answerF').checked){
-        getAnswer = document.getElementById('answerF').value;
-        console.log("GET ANSWER==>"+getAnswer);
+    else if (document.getElementById('answerB').checked){
+        getAnswer = document.getElementById('answerB').value;
     }
-    console.log("GET ANSWER============>"+getAnswer);
+    else if (document.getElementById('answerC').checked){
+        getAnswer = document.getElementById('answerC').value;
+    }
+    else if (document.getElementById('answerD').checked){
+        getAnswer = document.getElementById('answerD').value;
+    }
+    console.log("GET ANSWER====>"+getAnswer);
 
     return getAnswer.value;
 }
@@ -420,7 +424,6 @@ function showError(error) {
     }
 }
 
-
 function skipQuestion() {
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
@@ -431,7 +434,7 @@ function skipQuestion() {
                 location.reload();
             }
             else {
-                alert("This question can not be skipped.")
+                alert("This question can not be skipped!")
             }
         }
         else {

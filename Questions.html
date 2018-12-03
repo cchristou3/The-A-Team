@@ -29,15 +29,15 @@
     <form>
         <table>
             <tr>
-                <th><input type='button' id="answerA" name="answer" value="A" onclick="getLocation(document.getElementById('answerA').value)"></th>
-                <th><input type='button' id="answerB" name="answer" value="B" onclick="getLocation(document.getElementById('answerB').value)"></th>
+                <th><input type='radio' id="answerA" name="answer" value="A" onclick="getLocation()"></th>
+                <th><input type='radio' id="answerB" name="answer" value="B" onclick="getLocation()"></th>
             </tr>
             <tr>
-                <th><input type='button' id="answerC" name="answer" value="C" onclick="getLocation(document.getElementById('answer').value)"></th>
-                <th><input type='button' id="answerD" name="answer" value="D" onclick="getLocation(document.getElementById('answerA').value)"></th>
+                <th><input type='radio' id="answerC" name="answer" value="C" onclick="getLocation()"></th>
+                <th><input type='radio' id="answerD" name="answer" value="D" onclick="getLocation()"></th>
             </tr>
         </table>
-       <!-- <input type="button" name="answerSubmitted" value="submit" onclick="getLocation(/**/)" > -->
+        <input type="button" name="answerSubmitted" value="submit" onclick="getLocation(/**/)" >
         <input type="button" name="skip" value="skip" onclick="skipQuestion()">
     </form>
 </div>
