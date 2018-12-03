@@ -29,15 +29,15 @@
     <form>
         <table>
             <tr>
-                <th>A<input type='radio' id="answerA" name="answer" value="A"></th>
-                <th>B<input type='radio' id="answerB" name="answer" value="B"></th>
+                <th><input type='button' id="answerA" name="answer" value="A" onclick="getLocation(document.getElementById('answerA').value)"></th>
+                <th><input type='button' id="answerB" name="answer" value="B" onclick="getLocation(document.getElementById('answerB').value)"></th>
             </tr>
             <tr>
-                <th>C<input type='radio' id="answerC" name="answer" value="C"></th>
-                <th>D<input type='radio' id="answerD" name="answer" value="D"></th>
+                <th><input type='button' id="answerC" name="answer" value="C" onclick="getLocation(document.getElementById('answerC').value)"></th>
+                <th><input type='button' id="answerD" name="answer" value="D" onclick="getLocation(document.getElementById('answerD').value)"></th>
             </tr>
         </table>
-        <input type="button" name="answerSubmitted" value="submit" onclick="getLocation(/**/)" >
+       <!-- <input type="button" name="answerSubmitted" value="submit" onclick="getLocation(/**/)" > -->
         <!--<input type="button" name="skip" value="skip" onclick="skipQuestion()"> -->
     </form>
 </div>
@@ -53,16 +53,16 @@
 <div id ="Numbers">
     <form>
         <input type="number" step="1" name="answer" placeholder="Type here...">
-        <input type="button" name="answer" value="submit" onclick="ansText()">
+        <input type="button" name="answer" value="submit" onclick="getLocation()">
         <!--<input type="button" name="skip" value="skip" onclick="skipQuestion()"> -->
     </form>
 </div>
 
 <div id="Boolean">
     <form>
-        True<input type="radio" name="answer" value="true">
-        False<input type="radio" name="answer" value="false">
-        <input type="button" name="answer" value="submit" onclick="ansText()">
+        <input type="button" name="answerT" value="true" onclick="getLocation(document.getElementById('answerT').value)">
+        <input type="button" name="answerF" value="false" onclick="getLocation(document.getElementById('answerF').value)">
+        <!-- <input type="button" name="answer" value="submit" onclick="getLocation()"> -->
         <!--<input type="button" name="skip" value="skip" onclick="skipQuestion()"> -->
     </form>
 </div>
@@ -70,7 +70,7 @@
 <div id="Numeric">
     <form>
         <input type = "number" step="0.0001" name="answer" >
-        <input type="button" name="answer" value="submit" onclick="ansText()">
+        <input type="button" name="answer" value="submit" onclick="getLocation()">
         <!--<input type="button" name="skip" value="skip" onclick="skipQuestion()"> -->
     </form>
 </div>
