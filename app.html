@@ -7,7 +7,7 @@ single page for the whole app or multiple pages (e.g. individual pages for “st
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sample Treasure Hunt Web App</title>
-  </head>
+</head>
 <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="styles.css">
 <body>
 
@@ -16,52 +16,52 @@ single page for the whole app or multiple pages (e.g. individual pages for “st
 </div>
 
 
- <h2>A dynamic page enabling you to compete to the Treasure Hunt.</h2>
+<h2>A dynamic page enabling you to compete to the Treasure Hunt.</h2>
 
 <div class="h1box">
-        <p>
-            This is where you web-app implements the Treasure Hunt client functionality.
-        </p>
-        <ul>
-            <li>Please keep all your JavaScript in a single file, e.g. named <code>th-api.js</code>. Follow the instructions in the handout for defining the right functions.</li>
-            <li>Aim to implement all the required functions: <code>list</code>, <code>start</code>, <code>question</code>, etc. as specified
-                at: <a href="http://codecyprus.org/th/guide" target="_blank">http://codecyprus.org/th/guide</a></li>.
-        </ul>
-        <p>
-            Make sure to check out the sample code in <a href="th-api.js">th-api.js</a>.
-        </p>
+    <p>
+        This is where you web-app implements the Treasure Hunt client functionality.
+    </p>
+    <ul>
+        <li>Please keep all your JavaScript in a single file, e.g. named <code>th-api.js</code>. Follow the instructions in the handout for defining the right functions.</li>
+        <li>Aim to implement all the required functions: <code>list</code>, <code>start</code>, <code>question</code>, etc. as specified
+            at: <a href="http://codecyprus.org/th/guide" target="_blank">http://codecyprus.org/th/guide</a></li>.
+    </ul>
+    <p>
+        Make sure to check out the sample code in <a href="th-api.js">th-api.js</a>.
+    </p>
 </div>
 
 <div>
-        <button id="buttonHandleList" onclick="handleList(this)">Reload</button>
+    <button id="buttonHandleList" onclick="handleList(this)">Reload</button>
 </div>
 
-    <!--<div id="buttonReload" class="button" onclick="handleList(this)">Reload</div>-->
- <div id="loader" class="loader" hidden></div>
+<!--<div id="buttonReload" class="button" onclick="handleList(this)">Reload</div>-->
+<div id="loader" class="loader" hidden></div>
 
- <!-- this section is where the list of available treasure hunts will be loaded -->
- <div>Choose a treasure Hunt</div>
- <button id="btn" onclick="getChallenges()">Click to load challenges </button>
-  <div id="treasureHunts">
-      <ul id="challenges">
+<!-- this section is where the list of available treasure hunts will be loaded -->
+<div>Choose a treasure Hunt</div>
+<button id="btn" onclick="getChallenges()">Click to load challenges </button>
+<div id="treasureHunts">
+    <ul id="challenges">
 
-      </ul>
-  </div>
- <form id = "formTH"  action="javascript:getInfo()">
-     <p>Player name:<input id="formInput" type="text" name="Pname"></p>
-     <p><input type="submit"></p>
- </form>
+    </ul>
+</div>
+<form id = "formTH"  action="javascript:getInfo()">
+    <p>Player name:<input id="formInput" type="text" name="Pname"></p>
+    <p><input type="submit"></p>
+</form>
 
- <div id="message" class="infoMessage">
-        No messages
- </div>
+<div id="message" class="infoMessage">
+    No messages
+</div>
 
 <div>
     This is where the question is going to be provided from the server-> function Question?
 </div>
 
-    <!--Load the API JavaScript-->
-    <script src="th-api.js"></script>
+<!--Load the API JavaScript-->
+<script src="th-api.js"></script>
 
 </body>
 </html>
