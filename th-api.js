@@ -158,7 +158,7 @@ function getQuestions() {
 function ansText()
 {
     // console.log("ansText STARTED");
-    let ans = getAnswerParameter();
+    let ans = getAnswerTextParameter();
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
@@ -181,12 +181,90 @@ function ansText()
     console.log("ansText ENDED");
 
 }
+function ansNumber()
+{
+    console.log("ansNumber STARTED");
+    let ans = getAnswerNumberParameter();
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            console.log("GET ansText RESPONSE --> " + this.responseText);
+            let object = JSON.parse(this.responseText);
+            console.log("JSON.parse(this.responseText)"+object);
+            console.log(object.correct);
+            if (object.correct === true)
+            {
+                alert(object.correct);
+                location.reload();
+            }else
+                alert("Wrong Answer!, You lose 3 points, Try again");
+            showScore();
+        }
+    };
+    console.log("https://codecyprus.org/th/api/answer?session=" + getCookie("session")+"&answer="+ans);
+    xhttp.open("GET", "https://codecyprus.org/th/api/answer?session=" + getCookie("session")+"&answer="+ans, true);
+    xhttp.send();
+    console.log("ansNumber ENDED");
+
+}
+function ansNumeric()
+{
+    // console.log("ansText STARTED");
+    let ans = getAnswerNumericParameter();
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            console.log("GET ansText RESPONSE --> " + this.responseText);
+            let object = JSON.parse(this.responseText);
+            console.log("JSON.parse(this.responseText)"+object);
+            console.log(object.correct);
+            if (object.correct === true)
+            {
+                alert(object.correct);
+                location.reload();
+            }else
+                alert("Wrong Answer!, You lose 3 points, Try again");
+            showScore();
+        }
+    };
+    console.log("https://codecyprus.org/th/api/answer?session=" + getCookie("session")+"&answer="+ans);
+    xhttp.open("GET", "https://codecyprus.org/th/api/answer?session=" + getCookie("session")+"&answer="+ans, true);
+    xhttp.send();
+    console.log("ansText ENDED");
+
+}
+function ansBoolean()
+{
+    console.log("ansBoolean STARTED");
+    let ans = getAnswerBooleanParameter();
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            console.log("GET Boolean RESPONSE --> " + this.responseText);
+            let object = JSON.parse(this.responseText);
+            console.log("JSON.parse(this.responseText)"+object);
+            console.log(object.correct);
+            if (object.correct === true)
+            {
+                alert(object.correct);
+                location.reload();
+            }else
+                alert("Wrong Answer!, You lose 3 points, Try again");
+            showScore();
+        }
+    };
+    console.log("https://codecyprus.org/th/api/answer?session=" + getCookie("session")+"&answer="+ans);
+    xhttp.open("GET", "https://codecyprus.org/th/api/answer?session=" + getCookie("session")+"&answer="+ans, true);
+    xhttp.send();
+    console.log("ansBoolean ENDED");
+
+}
 function showScore() {
     console.log("showScore STARTED");
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
-            console.log("GET ansText RESPONSE --> " + this.responseText);
+            console.log("GET ans RESPONSE --> " + this.responseText);
             let object = JSON.parse(this.responseText);
             let divScore = document.getElementById("playerScore");
             divScore.innerHTML = "<p> Player: " + object.player + "  Score: " + object.score + "</p>";
@@ -216,9 +294,30 @@ function getParameters() {
     start(getName.value, selectedTreasureHuntID);
     // console.log("GETPARAMETERS END");
 }
-
-function getAnswerParameter() {
+function getAnswerTextParameter() {
     let getAnswer = document.getElementById("answerText");
+    return getAnswer.value;
+}
+function getAnswerNumberParameter() {
+    let getAnswer = document.getElementById("answerNumbers");
+    return getAnswer.value;
+}
+function getAnswerNumericParameter() {
+    let getAnswer = document.getElementById("answerNumeric");
+    return getAnswer.value;
+}
+function getAnswerBooleanParameter() {
+    let getAnswer;
+    if (document.getElementById('answerT').checked) {
+        getAnswer = document.getElementById('answerT').value;
+        console.log("GET ANSWER==>"+getAnswer);
+    }
+    else if (document.getElementById('answerF').checked){
+        getAnswer = document.getElementById('answerF').value;
+        console.log("GET ANSWER==>"+getAnswer);
+    }
+    console.log("GET ANSWER============>"+getAnswer);
+
     return getAnswer.value;
 }
 
@@ -290,7 +389,9 @@ function locationToServer(position) {
             console.log("GET LOCATION RESPONSE --> " + this.responseText);
             let object = JSON.parse(this.responseText);
             console.log("locationToServer ==> Success");
-            ansText();
+                ansText();
+         //   else if (object.questionType === "MCQ")
+           //     ansMCQ();
         }
     };
     xhttp.open("GET", "https://codecyprus.org/th/api/location?session=" + getCookie("session") + "&latitude=" + latitude + "&longitude=" + longitude, true);
@@ -313,11 +414,4 @@ function showError(error) {
             x.innerHTML = "An unknown error occurred.";
             break;
     }
-}
-
-
-
-function getSession() {
-    let url = new URL(window.location.href);
-    return url.searchParams.get("session");
 }
