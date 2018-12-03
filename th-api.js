@@ -31,7 +31,7 @@ function getChallenges() {
                 var linkItem = document.createElement("a");
                 linkItem.innerHTML = object.treasureHunts[i].name;
                 newItem.id = "#myLink"+i;
-                linkItem.href ="form.html";
+                linkItem.href ="form.html?treasureHuntID=" + object.treasureHunts[i].uuid;
 
                 //linkItem.href = "https://codecyprus.org/th/api/start?player=Homer&app=simpsons&treasure-hunt-id="+object.treasureHunts[i].uuid; //TODO REPLACE
                 newItem.appendChild(linkItem);
@@ -45,7 +45,7 @@ function getChallenges() {
                 var e = document.getElementById("#myLink"+i);
                 // when user clicks on a treasure Hunts, a form appears while the list disappears
                 e.onclick = function(){
-                    setCookie("session", object.treasureHunts[i].uuid, 365);
+                    //setCookie("session", object.treasureHunts[i].uuid, 365);
                     // document.cookie = "uuid="+object.treasureHunts[i].uuid;
                     // The cookie saves the session
                     console.log("DOCUMENT COOKIE= "+document.cookie);
@@ -66,8 +66,8 @@ function getChallenges() {
 //-----------------------------------------------------------------------------------------//
 // this function is responsible for loading a form. The user will be asked to complete  form with
 // Name, App name  -> onSubmit he will be redirected to the game based on his "progress"
-function start(getName) {
-    console.log("START STARTED");
+function start(name, treasureHuntID) {
+    console.log("START STARTED WITH PLAYER NAME: " + name + " AND TREASUREHUNTID: " + treasureHuntID);
 
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
@@ -79,7 +79,8 @@ function start(getName) {
             }
             else {
                 //TODO OK
-                document.cookie = "session=" + object.session;
+                // document.cookie = "session=" + object.session;
+                setCookie("session", object.session, 365);
                 window.location.href = "Questions.html";
             }
         }
@@ -87,7 +88,7 @@ function start(getName) {
             //TODO ERROR MESSAGE
         }
     };
-    xhttp.open("GET", "https://codecyprus.org/th/api/start?player=" + getName + "&app=The-A-Team&treasure-hunt-id=" + getCookie("session"), true);
+    xhttp.open("GET", "https://codecyprus.org/th/api/start?player=" + name + "&app=The-A-Team&treasure-hunt-id=" + treasureHuntID, true);
     xhttp.send();
     console.log("START ENDED");
 }
@@ -96,11 +97,11 @@ function start(getName) {
 // Get A question function
 
 function getQuestions() {
-    console.log("GET QUESTIONS STARTED");
+    // console.log("GET QUESTIONS STARTED");
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
-            console.log("GET QUESTION RESPONSE --> " + this.responseText);
+            console.log(this.responseText);
             let object = JSON.parse(this.responseText);
             console.log(object);
 
@@ -114,7 +115,7 @@ function getQuestions() {
                 //leaderboard();
             }
 
-            if (object.requires-location===true)
+            if (object.requiresLocation===true)
             {
                 getLocation();
             }
@@ -156,7 +157,7 @@ function getQuestions() {
 }
 function ansText()
 {
-    console.log("ansText STARTED");
+    // console.log("ansText STARTED");
     let ans = getAnswerParameter();
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
@@ -167,6 +168,7 @@ function ansText()
             console.log(object.correct);
             if (object.correct === true)
             {
+                alert(object.correct);
                 location.reload();
             }else
                 alert("Wrong Answer!, You lose 3 points, Try again");
@@ -208,16 +210,16 @@ function showScore() {
 // Still needs work
 // Gets the parameter in the url
 function getParameters() {
-    console.log("GETPARAMETERS START");
+    // console.log("GETPARAMETERS START");
     let getName  = document.getElementById("playerName");
-    console.log(getName.value);
-    start(getName.value);
-    console.log("GETPARAMETERS END");
+    // console.log(getName.value);
+    start(getName.value, selectedTreasureHuntID);
+    // console.log("GETPARAMETERS END");
 }
+
 function getAnswerParameter() {
     let getAnswer = document.getElementById("answerText");
     return getAnswer.value;
-
 }
 
 //-------------------------------------------------------------------------------------------//
@@ -261,33 +263,40 @@ function checkCookie() {
 //-------------------------------------------------------------------------------------------//
 // Code was taken from https://www.w3schools.com/html/html5_geolocation.asp
 // This function's goal is to capture the users location
+
 function getLocation() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
+        navigator.geolocation.getCurrentPosition(locationToServer);
     } else {
         showError();
     }
 }
+
 // shows the location in HTML
 function showPosition(position) {
-    var x = document.getElementById("QuestionArea");
-    x.innerHTML="Latitude: " + position.coords.latitude +
-        "<br>Longitude: " + position.coords.longitude;
-    locationToServer(position.coords.latitude,position.coords.longitude);
-
+    // var x = document.getElementById("QuestionArea");
+    // x.innerHTML="Latitude: " + position.coords.latitude +
+    //     "<br>Longitude: " + position.coords.longitude;
+    // locationToServer(position.coords.latitude,position.coords.longitude);
 }
-function locationToServer(latitude,longitude) {
+
+function locationToServer(position) {
+    let longitude = position.coords.longitude;
+    let latitude = position.coords.latitude;
+
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
-            console.log("GET ansText RESPONSE --> " + this.responseText);
+            console.log("GET LOCATION RESPONSE --> " + this.responseText);
             let object = JSON.parse(this.responseText);
             console.log("locationToServer ==> Success");
+            ansText();
         }
     };
-    xhttp.open("GET", "https://codecyprus.org/th/api/location?session=" + getCookie("session")+"&latitude="+latitude+"&longitude="+longitude, true);
+    xhttp.open("GET", "https://codecyprus.org/th/api/location?session=" + getCookie("session") + "&latitude=" + latitude + "&longitude=" + longitude, true);
     xhttp.send();
 }
+
 
 function showError(error) {
     switch(error.code) {

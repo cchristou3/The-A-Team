@@ -28,16 +28,16 @@
 <div id ="Select">
     <form>
         <table>
-        <tr>
-            <th>A<input type='radio' name="answer" value="A"></th>
-            <th>B<input type='radio' name="answer" value="B"></th>
-        </tr>
-        <tr>
-            <th>B<input type='radio' name="answer" value="C"></th>
-            <th>B<input type='radio' name="answer" value="D"></th>
-        </tr>
+            <tr>
+                <th>A<input type='radio' id="answerA" name="answer" value="A"></th>
+                <th>B<input type='radio' id="answerB" name="answer" value="B"></th>
+            </tr>
+            <tr>
+                <th>C<input type='radio' id="answerC" name="answer" value="C"></th>
+                <th>D<input type='radio' id="answerD" name="answer" value="D"></th>
+            </tr>
         </table>
-        <input type="button" name="answerSubmitted" value="submit" onclick="ansText()" >
+        <input type="button" name="answerSubmitted" value="submit" onclick="getLocation(/**/)" >
         <!--<input type="button" name="skip" value="skip" onclick="skipQuestion()"> -->
     </form>
 </div>
@@ -45,26 +45,26 @@
 <div id = "Text">
     <form>
         <input id="answerText" type="text" name="answer" placeholder="Type here...">
-        <input type="button" name="answer" value="submit" onclick="ansText()">
+        <input type="button" name="answer" value="submit" onclick="getLocation()">
         <!--<input type="button" name="skip" value="skip" onclick="skipQuestion()"> -->
     </form>
 </div>
 
 <div id ="Numbers">
-   <form>
-       <input type="number" step="1" name="answer" placeholder="Type here...">
-       <input type="button" name="answer" value="submit" onclick="ansText()">
-       <!--<input type="button" name="skip" value="skip" onclick="skipQuestion()"> -->
-   </form>
+    <form>
+        <input type="number" step="1" name="answer" placeholder="Type here...">
+        <input type="button" name="answer" value="submit" onclick="ansText()">
+        <!--<input type="button" name="skip" value="skip" onclick="skipQuestion()"> -->
+    </form>
 </div>
 
 <div id="Boolean">
-   <form>
-       True<input type="radio" name="answer" value="true">
-       False<input type="radio" name="answer" value="false">
-       <input type="button" name="answer" value="submit" onclick="ansText()">
-       <!--<input type="button" name="skip" value="skip" onclick="skipQuestion()"> -->
-   </form>
+    <form>
+        True<input type="radio" name="answer" value="true">
+        False<input type="radio" name="answer" value="false">
+        <input type="button" name="answer" value="submit" onclick="ansText()">
+        <!--<input type="button" name="skip" value="skip" onclick="skipQuestion()"> -->
+    </form>
 </div>
 
 <div id="Numeric">

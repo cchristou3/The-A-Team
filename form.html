@@ -5,27 +5,34 @@
     <title>Form</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const selectedTreasureHuntID = urlParams.get("treasureHuntID");
+        // console.log("SELECTED TREASURE HUNT ID --> " + selectedTreasureHuntID);
+    </script>
+
 </head>
 <body>
 
-    <div class="h1box">
-        <h1> The Treasure Hunt</h1>
-    </div>
-    <!-- Pirate CLoud -->
-    <div class="cloudtext">
-        <img src="cloud.png" alt="cloud" class="cloud" >
-        <div class="centered">Please fill in the form with your name!<br> Click on the "Begin" Button below to start hunting!</div>
-    </div>
+<div class="h1box">
+    <h1> The Treasure Hunt</h1>
+</div>
+<!-- Pirate CLoud -->
+<div class="cloudtext">
+    <img src="cloud.png" alt="cloud" class="cloud" >
+    <div class="centered">Please fill in the form with your name!<br> Click on the "Begin" Button below to start hunting!</div>
+</div>
 
-    <img src="pirate3.PNG" alt="Pirate" class="pirate" >
+<img src="pirate3.png" alt="Pirate" class="pirate" >
 
-    <div> <!-- This loads the form -->
-        <form   id = "formTH"> <!-- action="javascript:getInfo()" -->
-            <h2>Insert Player Name</h2>
-            <p><input id="playerName" class="playerName" type="text" name="player"></p>
-            <input type="button" class="begin" onclick="getParameters()" value="Submit">
-        </form>
-    </div>
+<div> <!-- This loads the form -->
+    <!--<form   id = "formTH"> &lt;!&ndash; action="javascript:getInfo()" &ndash;&gt;-->
+    <h2>Insert Player Name</h2>
+    <p><input id="playerName" class="playerName" type="text" name="player"></p>
+    <input type="button" class="begin" onclick="getParameters()" value="Submit">
+    <!--</form>-->
+</div>
 
 <script src="th-api.js"></script>
 </body>
