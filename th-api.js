@@ -248,6 +248,57 @@ function ansBoolean()
     xhttp.send();
     console.log("ansBoolean ENDED");
 
+}function ansText()
+{
+    // console.log("ansText STARTED");
+    let ans = getAnswerTextParameter();
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            console.log("GET ansText RESPONSE --> " + this.responseText);
+            let object = JSON.parse(this.responseText);
+            console.log("JSON.parse(this.responseText)"+object);
+            console.log(object.correct);
+            if (object.correct === true)
+            {
+                alert(object.correct);
+                location.reload();
+            }else
+                alert("Wrong Answer!, You lose 3 points, Try again");
+            showScore();
+        }
+    };
+    console.log("https://codecyprus.org/th/api/answer?session=" + getCookie("session")+"&answer="+ans);
+    xhttp.open("GET", "https://codecyprus.org/th/api/answer?session=" + getCookie("session")+"&answer="+ans, true);
+    xhttp.send();
+    console.log("ansText ENDED");
+
+}
+function ansMCQ()
+{
+    console.log("ansNumber STARTED");
+    let ans = getAnswerMCQParameter();
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            console.log("GET ansText RESPONSE --> " + this.responseText);
+            let object = JSON.parse(this.responseText);
+            console.log("JSON.parse(this.responseText)"+object);
+            console.log(object.correct);
+            if (object.correct === true)
+            {
+                alert(object.correct);
+                location.reload();
+            }else
+                alert("Wrong Answer!, You lose 3 points, Try again");
+            showScore();
+        }
+    };
+    console.log("https://codecyprus.org/th/api/answer?session=" + getCookie("session")+"&answer="+ans);
+    xhttp.open("GET", "https://codecyprus.org/th/api/answer?session=" + getCookie("session")+"&answer="+ans, true);
+    xhttp.send();
+    console.log("ansNumber ENDED");
+
 }
 function showScore() {
     console.log("showScore STARTED");
@@ -429,7 +480,7 @@ function skipQuestion() {
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             //TODO If response received (success).
-            object = JSON.parse(this.responseText);
+            let object = JSON.parse(this.responseText);
             if (object.canBeSkipped === true) {
                 location.reload();
             }
@@ -441,6 +492,6 @@ function skipQuestion() {
             //TODO If response not received (error).
         }
     };
-    xhttp.open("GET", "https://codecyprus.org/th/api/question?session=" + getCookie("session"), true);
+    xhttp.open("GET", "https://codecyprus.org/th/api/skip?session=" + getCookie("session"), true);
     xhttp.send();
 }
