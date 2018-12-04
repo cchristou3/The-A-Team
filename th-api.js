@@ -102,7 +102,7 @@ function getQuestions() {
             {
                 //https://stackoverflow.com/questions/2144386/how-to-delete-a-cookie
                 document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-                //leaderboard();
+                window.location.href = "leaderboard.html";
             }
 
             // if (object.requiresLocation===true)
@@ -356,4 +356,10 @@ function skipQuestion() {
     }
     else
         alert("CAN NOT BE SKIPPED");
+}
+
+function leaderboard()
+{
+
+
 }
