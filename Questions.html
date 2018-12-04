@@ -17,10 +17,9 @@
 
 </div>
 
-<!-- Pirate Picture -->
-<img src="pirate3.png" alt="Pirate" class="pirate" >
-
-<div id="playerScore">
+<!-- Question Mark Picture -->
+<img src="questionmark.gif" alt="Pirate" class="pirate" height="5%" >
+<div id="playerScore" class="playerScore">
 
 </div>
 
@@ -29,12 +28,12 @@
     <form>
         <table>
             <tr>
-                <th><input type='button' id="answerA" value="A" onclick="ansText('A')"></th>
-                <th><input type='button' id="answerB" value="B" onclick="ansText('B')"></th>
+                <th><input class="abcd" type='button' id="answerA" value="A" onclick="ansText('A')"></th>
+                <th><input class="abcd" type='button' id="answerB" value="B" onclick="ansText('B')"></th>
             </tr>
             <tr>
-                <th><input type='button' id="answerC" value="C" onclick="ansText('C')"></th>
-                <th><input type='button' id="answerD" value="D" onclick="ansText('D')"></th>
+                <th><input class="abcd" type='button' id="answerC" value="C" onclick="ansText('C')"></th>
+                <th><input class="abcd" type='button' id="answerD" value="D" onclick="ansText('D')"></th>
             </tr>
         </table>
         <input type="button" name="skip" value="skip" class="submit" onclick="skipQuestion()">
@@ -43,7 +42,7 @@
 
 <div id = "Text">
     <form>
-        <input id="answerText" type="text"  placeholder="Type here...">
+        <input class="textbox" id="answerText" type="text"  placeholder="Type here...">
         <input type="button"  value="submit" class="submit"  onclick="ansText(document.getElementById('answerText').value)">
         <input type="button"  value="skip" class="submit" onclick="skipQuestion()">
     </form>
@@ -51,25 +50,25 @@
 
 <div id ="Numbers">
     <form>
-        <input id = "answerNumber" type="number" step="1" class="text-box" placeholder="Type here...">
-        <input type="button" value="submit" class="submit" onclick="ansText(document.getElementById('answerNumber').value)">
-        <input type="button" value="skip" class="submit"  onclick="skipQuestion()">
+        <input class="textbox" id = "answerNumber" type="number" step="1" class="text-box" placeholder="Type here...">
+        <input class="submit" type="button" value="submit" class="submit" onclick="ansText(document.getElementById('answerNumber').value)">
+        <input class="submit" type="button" value="skip" class="submit"  onclick="skipQuestion()">
     </form>
 </div>
 
 <div id="Boolean">
     <form>
-        <input type="button" value="true"  onclick="ansText('true')">
-        <input type="button" value="false"  onclick="ansText('false')">
-        <input type="button" name="skip" value="skip" class="submit" onclick="skipQuestion()">
+        <input class="submit" type="button" value="true"  onclick="ansText('true')">
+        <input class="submit" type="button" value="false"  onclick="ansText('false')">
+        <input class="submitskip" type="button" name="skip" value="skip" class="submit" onclick="skipQuestion()">
     </form>
 </div>
 
 <div id="Numeric">
     <form>
-        <input id = "ansNumeric" type = "number" step="0.0001" name="answer" >
-        <input type="button" name="answer" value="submit" class="submit" onclick="ansText(document.getElementById('ansNumeric').value)">
-        <input type="button" name="skip" value="skip" class="submit" onclick="skipQuestion()">
+        <input class="textbox" id = "ansNumeric" type = "number" step="0.0001" name="answer" >
+        <input  class="submit" type="button" name="answer" value="submit" class="submit" onclick="ansText(document.getElementById('ansNumeric').value)">
+        <input  class="submit" type="button" name="skip" value="skip" class="submit" onclick="skipQuestion()">
     </form>
 </div>
 
