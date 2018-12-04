@@ -86,6 +86,7 @@ function start(name, treasureHuntID) {
 //-------------------------------------------------------------------------------------------//
 // Get A question function
 
+let canBeSkipped = true;
 function getQuestions() {
     // console.log("GET QUESTIONS STARTED");
     xhttp = new XMLHttpRequest();
@@ -95,8 +96,7 @@ function getQuestions() {
             let object = JSON.parse(this.responseText);
             console.log(object);
 
-
-
+            canBeSkipped = object['canBeSkipped'];
             // when treasurehunt is over go to leaderboard
             if (object.completed === true)
             {
@@ -476,22 +476,15 @@ function showError(error) {
 }
 
 function skipQuestion() {
+    if (canBeSkipped === true){
     let xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
-            //TODO If response received (success).
+    xhttp.onload = function () {         //TODO If response received (success).
             let object = JSON.parse(this.responseText);
-            if (object.canBeSkipped === true) {
-                location.reload();
-            }
-            else {
-                alert("This question can not be skipped!")
-            }
-        }
-        else {
-            //TODO If response not received (error).
-        }
-    };
-    xhttp.open("GET", "https://codecyprus.org/th/api/skip?session=" + getCookie("session"), true);
-    xhttp.send();
+            location.reload();
+         };
+        xhttp.open("GET", "https://codecyprus.org/th/api/skip?session=" + getCookie("session"), true);
+        xhttp.send();
+    }
+    else
+        alert("CAN NOT BE SKIPPED");
 }
