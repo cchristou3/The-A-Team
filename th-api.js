@@ -98,7 +98,7 @@ function getQuestions() {
 
             canBeSkipped = object['canBeSkipped'];
             // when treasurehunt is over go to leaderboard
-            if (object.completed === true)
+            if (object['completed'] === true)
             {
                 //https://stackoverflow.com/questions/2144386/how-to-delete-a-cookie
                 document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
@@ -147,8 +147,7 @@ function getQuestions() {
 }
 function ansText(ans)
 {
-    // console.log("ansText STARTED");
-  //  let ans = getAnswerTextParameter();
+
     getLocation();
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
