@@ -29,15 +29,14 @@
     <form>
         <table>
             <tr>
-                <th><input type='radio' id="answerA" name="answer" value="A" onclick="getLocation()">A</th>
-                <th><input type='radio' id="answerB" name="answer" value="B" onclick="getLocation()">B</th>
+                <th><input type='button' id="answerA" value="A" onclick="ansText('A')"></th>
+                <th><input type='button' id="answerB" value="B" onclick="ansText('B')"></th>
             </tr>
             <tr>
-                <th><input type='radio' id="answerC" name="answer" value="C" onclick="getLocation()">C</th>
-                <th><input type='radio' id="answerD" name="answer" value="D" onclick="getLocation()">D</th>
+                <th><input type='button' id="answerC" value="C" onclick="ansText('C')"></th>
+                <th><input type='button' id="answerD" value="D" onclick="ansText('D')"></th>
             </tr>
         </table>
-        <input type="button" name="answerSubmitted" value="submit" class="submit" onclick="getLocation(/**/)" >
         <input type="button" name="skip" value="skip" class="submit" onclick="skipQuestion()">
     </form>
 </div>
@@ -45,32 +44,31 @@
 <div id = "Text">
     <form>
         <input id="answerText" type="text" name="answer" placeholder="Type here...">
-        <input type="button" name="answer" value="submit"class="submit"  onclick="getLocation()">
+        <input type="button" name="answer" value="submit"class="submit"  onclick="ansText(document.getElementById('answerText').value)">
         <input type="button" name="skip" value="skip" class="submit" onclick="skipQuestion()">
     </form>
 </div>
 
 <div id ="Numbers">
     <form>
-        <input type="number" step="1" name="answer" class="textbox" placeholder="Type here...">
-        <input type="button" name="answer" value="submit" class="submit" onclick="getLocation()">
-        <input type="button" name="skip" value="skip" class="submit"  onclick="skipQuestion()">
+        <input id = "answerNumber" type="number" step="1" class="text-box" placeholder="Type here...">
+        <input type="button" value="submit" class="submit" onclick="ansText(document.getElementById('answerNumber').value)">
+        <input type="button" value="skip" class="submit"  onclick="skipQuestion()">
     </form>
 </div>
 
 <div id="Boolean">
     <form>
-        True<input type="radio" name="answer" value="true">
-        False<input type="radio" name="answer" value="false">
-        <input type="button" name="answer" value="submit" class="submit" onclick="getLocation()">
+        True<input type="button" value="true"  onclick="ansText('true')">
+        False<input type="button" value="false"  onclick="ansText('false')">
         <input type="button" name="skip" value="skip" class="submit" onclick="skipQuestion()">
     </form>
 </div>
 
 <div id="Numeric">
     <form>
-        <input type = "number" step="0.0001" name="answer" >
-        <input type="button" name="answer" value="submit" class="submit" onclick="getLocation()">
+        <input id = "ansNumeric" type = "number" step="0.0001" name="answer" >
+        <input type="button" name="answer" value="submit" class="submit" onclick="ansText(document.getElementById('ansNumeric').value)">
         <input type="button" name="skip" value="skip" class="submit" onclick="skipQuestion()">
     </form>
 </div>
