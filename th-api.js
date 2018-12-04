@@ -193,14 +193,43 @@ function showScore() {
     xhttp.send();
     console.log("showScore ENDED");
 }
-//function getSession()
-//{
-//   let url = new URL(window.location.href);
-//  return url.searchParams.get("session");
-//}
-//-------------------------------------------------------------------------------------------//
-// Still needs work
-// Gets the parameter in the url
+function leaderboard() {
+    console.log("LEADERBOARD===> STARTED");
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            console.log("GET LEADERBOARD RESPONSE --> " + this.responseText);
+            let object = JSON.parse(this.responseText);
+            let objectArray = object['leaderboard'];
+            let html = "<table>" + "<tr>"+"<th>" +"Name" +"</th>"+
+                "<th>" +"Score" +"</th>"+
+                "<th>" +"Time" +"</th>"+
+                "</tr>";
+            for (let i in objectArray)
+            {
+                let entry = objectArray[i];
+                html += "<tr>" +
+                    "  <td>"+entry['player'] + "</td>"+
+                    "  <td>"+entry['score'] + "</td>"+
+                    "  <td>"+entry['completionTime'] + "</td>"+
+                    "</tr>";
+
+            }
+            html += "</table>";
+            let list =  document.getElementById("leaderboardList");
+            list.innerHTML = html;
+            // the leaderboard will load through javascript inner.HTML implementation
+        }
+        else
+        {
+            console.log("ERROR MESSAGE!");
+            //TODO ERROR MSG
+        }
+    };
+    xhttp.open("GET", "https://codecyprus.org/th/api/leaderboard?session=" + getCookie("session")+"&sorted&limit=1000", true);
+    xhttp.send();
+}
+
 function getParameters() {
     // console.log("GETPARAMETERS START");
     let getName  = document.getElementById("playerName");
@@ -315,23 +344,3 @@ function skipQuestion() {
         alert("CAN NOT BE SKIPPED");
 }
 
-function leaderboard()
-{
-    let xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
-            console.log("GET ans RESPONSE --> " + this.responseText);
-            let object = JSON.parse(this.responseText);
-            // TODO
-            // the ldeaderboard will load through javascript inner.HTML implementation
-        }
-        else
-        {
-            console.log("ERROR MESSAGE!");
-            //TODO ERROR MSG
-        }
-    };
-    xhttp.open("GET", "https://codecyprus.org/th/api/leaderboard?session=" + getCookie("session")+"&sorted&limit=10", true);
-    xhttp.send();
-
-}
