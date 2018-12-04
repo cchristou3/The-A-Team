@@ -101,7 +101,7 @@ function getQuestions() {
             if (object['completed'] === true)
             {
                 //https://stackoverflow.com/questions/2144386/how-to-delete-a-cookie
-                
+
                 document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
                 window.location.href = "leaderboard.html";
             }
@@ -323,6 +323,7 @@ function leaderboard()
             console.log("GET ans RESPONSE --> " + this.responseText);
             let object = JSON.parse(this.responseText);
             // TODO
+            // the ldeaderboard will load through javascript inner.HTML implementation
         }
         else
         {
