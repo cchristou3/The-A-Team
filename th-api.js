@@ -207,50 +207,6 @@ function getParameters() {
     start(getName.value, selectedTreasureHuntID);
     // console.log("GETPARAMETERS END");
 }
-function getAnswerTextParameter() {
-    let getAnswer = document.getElementById("answerText");
-    return getAnswer.value;
-}
-function getAnswerNumberParameter() {
-    let getAnswer = document.getElementById("answerNumbers");
-    return getAnswer.value;
-}
-function getAnswerNumericParameter() {
-    let getAnswer = document.getElementById("answerNumeric");
-    return getAnswer.value;
-}
-function getAnswerBooleanParameter() {
-    let getAnswer;
-    if (document.getElementById('answerT').checked) {
-        getAnswer = document.getElementById('answerT').value;
-        console.log("GET ANSWER==>"+getAnswer);
-    }
-    else if (document.getElementById('answerF').checked){
-        getAnswer = document.getElementById('answerF').value;
-        console.log("GET ANSWER==>"+getAnswer);
-    }
-    console.log("GET ANSWER============>"+getAnswer);
-
-    return getAnswer.value;
-}
-function getAnswerMCQParameter() {
-    let getAnswer;
-    if (document.getElementById('answerA').checked) {
-        getAnswer = document.getElementById('answerA').value;
-    }
-    else if (document.getElementById('answerB').checked){
-        getAnswer = document.getElementById('answerB').value;
-    }
-    else if (document.getElementById('answerC').checked){
-        getAnswer = document.getElementById('answerC').value;
-    }
-    else if (document.getElementById('answerD').checked){
-        getAnswer = document.getElementById('answerD').value;
-    }
-    console.log("GET ANSWER====>"+getAnswer);
-
-    return getAnswer.value;
-}
 
 //-------------------------------------------------------------------------------------------//
 
@@ -360,6 +316,20 @@ function skipQuestion() {
 
 function leaderboard()
 {
-
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            console.log("GET ans RESPONSE --> " + this.responseText);
+            let object = JSON.parse(this.responseText);
+            // TODO
+        }
+        else
+        {
+            console.log("ERROR MESSAGE!");
+            //TODO ERROR MSG
+        }
+    };
+    xhttp.open("GET", "https://codecyprus.org/th/api/leaderboard?session=" + getCookie("session")+"&sorted&limit=10", true);
+    xhttp.send();
 
 }
