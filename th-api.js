@@ -206,7 +206,11 @@ function skipQuestion() {
     else
         alert("CAN NOT BE SKIPPED");
 }
-
+function isTest() {
+    let url = new URL(window.location.href);
+    console.log(url.searchParams.get("test") != null);
+    return url.searchParams.get("test") != null;
+}
 function leaderboard() {
     console.log("LEADERBOARD===> STARTED");
     let xhttp = new XMLHttpRequest();
@@ -215,17 +219,20 @@ function leaderboard() {
             console.log("GET LEADERBOARD RESPONSE --> " + this.responseText);
             let object = JSON.parse(this.responseText);
             let objectArray = object['leaderboard'];
-            let html = "<table>" + "<tr>"+"<th>" +"Name" +"</th>"+
+            let options = { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', second: '2-digit'};
+                let html = "<table>" + "<tr>"+"<th>" +"Name" +"</th>"+
                 "<th>" +"Score" +"</th>"+
                 "<th>" +"Time" +"</th>"+
                 "</tr>";
             for (let i in objectArray)
             {
                 let entry = objectArray[i];
+                let date = new Date(entry['completionTime']);
+                let formattedDate = date.toLocaleDateString("en-UK", options);
                 html += "<tr>" +
                     "  <td>"+entry['player'] + "</td>"+
                     "  <td>"+entry['score'] + "</td>"+
-                    "  <td>"+entry['completionTime'] + "</td>"+
+                    "  <td>"+ formattedDate + "</td>"+
                     "</tr>";
 
             }
@@ -343,4 +350,5 @@ function showError(error) {
             break;
     }
 }
+
 
