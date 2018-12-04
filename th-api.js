@@ -154,7 +154,7 @@ function ansText(ans)
         if (this.readyState === 4 && this.status === 200) {
             console.log("GET ansText RESPONSE --> " + this.responseText);
             let object = JSON.parse(this.responseText);
-            console.log("JSON.parse(this.responseText)"+object);
+            console.log("JSON.parse(this.responseText)==>"+object);
             console.log(object.correct);
             if (object.correct === true)
             {
