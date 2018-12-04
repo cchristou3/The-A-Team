@@ -2,8 +2,7 @@ const TH_API_URL = "https://codecyprus.org/th/api/"; // the API base url
 
 
 // The List loads
-var challengesList = document.getElementById("challenges");
-
+let challengesList = document.getElementById("challenges");
 function getChallenges() {
     // This line makes sure the button disappears once it is pressed
     //  document.getElementById("btn").style.display = "none";
@@ -193,6 +192,21 @@ function showScore() {
     xhttp.send();
     console.log("showScore ENDED");
 }
+
+function skipQuestion() {
+    if (canBeSkipped === true){
+        let xhttp = new XMLHttpRequest();
+        xhttp.onload = function () {         //TODO If response received (success).
+            let object = JSON.parse(this.responseText);
+            location.reload();
+        };
+        xhttp.open("GET", "https://codecyprus.org/th/api/skip?session=" + getCookie("session"), true);
+        xhttp.send();
+    }
+    else
+        alert("CAN NOT BE SKIPPED");
+}
+
 function leaderboard() {
     console.log("LEADERBOARD===> STARTED");
     let xhttp = new XMLHttpRequest();
@@ -226,7 +240,7 @@ function leaderboard() {
             //TODO ERROR MSG
         }
     };
-    xhttp.open("GET", "https://codecyprus.org/th/api/leaderboard?session=" + getCookie("session")+"&sorted&limit=1000", true);
+    xhttp.open("GET", "https://codecyprus.org/th/api/leaderboard?session=" + getCookie("session")+"&sorted&limit=10", true);
     xhttp.send();
 }
 
@@ -328,19 +342,5 @@ function showError(error) {
             x.innerHTML = "An unknown error occurred.";
             break;
     }
-}
-
-function skipQuestion() {
-    if (canBeSkipped === true){
-    let xhttp = new XMLHttpRequest();
-    xhttp.onload = function () {         //TODO If response received (success).
-            let object = JSON.parse(this.responseText);
-            location.reload();
-         };
-        xhttp.open("GET", "https://codecyprus.org/th/api/skip?session=" + getCookie("session"), true);
-        xhttp.send();
-    }
-    else
-        alert("CAN NOT BE SKIPPED");
 }
 
