@@ -44,3 +44,15 @@ Working on the assignment. Creating a new page,trying to get response from the s
 Week 3(Nov 29th)
 Attendance:Antonis,Charalambos,Christodoulos
 Since we have figure out how to GET the questions from the server now we are trying to fix the program so the user can answer appropriately each type of question and receive feedback from the server
+
+Week 4(Dec 3th)
+Attendance:Antonis,Charalambos,Christodoulos
+Implemented get location code,
+
+Week 4(Dec 4th)
+Attendance:Antonis,Charalambos,Christodoulos
+New stylings added (Gifs) skip button fixed , created leaderboard
+
+Week4(Dec 5th)
+Attendance:Antonis,Charalambos,Christodoulos
+Inside class adding QR code reader, adding prompt boxes-alert boxes,fixed location
