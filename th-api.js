@@ -159,7 +159,7 @@ function ansText(ans)
             console.log(object.correct);
             if (object.correct === true)
             {
-                alert(object.correct);
+                alert("Correct Answer!, You gained 10 points");
 
                 location.reload();
             }else
@@ -195,9 +195,20 @@ function showScore() {
     xhttp.send();
     console.log("showScore ENDED");
 }
-
+function myFunction() {
+    var txt;
+    if (confirm("Press a button!")) {
+        txt = "You pressed OK!";
+    } else {
+        txt = "You pressed Cancel!";
+    }
+    document.getElementById("demo").innerHTML = txt;
+}
 function skipQuestion() {
+
     if (canBeSkipped === true){
+        if(confirm("Are sure you want to skip the question?\n You will lose 5 points"))
+        {
         let xhttp = new XMLHttpRequest();
         xhttp.onload = function () {         //TODO If response received (success).
             let object = JSON.parse(this.responseText);
@@ -205,6 +216,7 @@ function skipQuestion() {
         };
         xhttp.open("GET", "https://codecyprus.org/th/api/skip?session=" + getCookie("session"), true);
         xhttp.send();
+     }
     }
     else
         alert("CAN NOT BE SKIPPED");
