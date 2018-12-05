@@ -84,7 +84,7 @@ function start(name, treasureHuntID) {
 
 //-------------------------------------------------------------------------------------------//
 // Get A question function
-
+let needsLocation = true;
 let canBeSkipped = true;
 function getQuestions() {
     // console.log("GET QUESTIONS STARTED");
@@ -94,7 +94,7 @@ function getQuestions() {
             console.log(this.responseText);
             let object = JSON.parse(this.responseText);
             console.log(object);
-
+            needsLocation = object['requiresLocation'];
             canBeSkipped = object['canBeSkipped'];
             // when treasurehunt is over go to leaderboard
             if (object['completed'] === true)
@@ -147,8 +147,9 @@ function getQuestions() {
 }
 function ansText(ans)
 {
-
-    getLocation();
+    if (needsLocation) {
+        getLocation();
+    }
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
