@@ -16,8 +16,8 @@ function getChallenges() {
             console.log("STATUS ==> "+object.status);
             for (let i = 0;i<object.treasureHunts.length;i++)
             {
-                var newItem = document.createElement("li");
-                var linkItem = document.createElement("a");
+                let newItem = document.createElement("li");
+                let linkItem = document.createElement("a");
                 linkItem.innerHTML = object.treasureHunts[i].name;
                 newItem.id = "#myLink"+i;
                 linkItem.href ="form.html?treasureHuntID=" + object.treasureHunts[i].uuid;
@@ -44,7 +44,6 @@ function getChallenges() {
         else {
             //TODO If response not received (error).
             // Need to run without Internet connection to be tested
-            console.log("message");
         }
     };
     xhttp.open("GET", "https://codecyprus.org/th/api/list", true);
@@ -73,9 +72,12 @@ function start(name, treasureHuntID) {
                 window.location.href = "Questions.html";
             }
         }
-        else {
-            //TODO ERROR MESSAGE
-        }
+        else if (this.readyState === 0)
+            {
+                console.log("NAME ALREADY DEFINED");
+            }
+
+
     };
     xhttp.open("GET", "https://codecyprus.org/th/api/start?player=" + name + "&app=The-A-Team&treasure-hunt-id=" + treasureHuntID, true);
     xhttp.send();
@@ -89,6 +91,7 @@ let canBeSkipped = true;
 function getQuestions() {
     // console.log("GET QUESTIONS STARTED");
     console.log("QUESTION SESSION===> "+getCookie("session"));
+    showScore();
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
@@ -135,7 +138,6 @@ function getQuestions() {
         }
         else {
             // Error message: TODO
-           alert("No Internet Connection");
         }
 
     };
@@ -161,11 +163,7 @@ function ansText(ans)
                 location.reload();
             }else
                 alert("Wrong Answer!, You lose 3 points, Try again");
-
-            showScore();
-        }
-        else
-            alert("No Internet Connection");
+            }
     };
     console.log("https://codecyprus.org/th/api/answer?session=" + getCookie("session")+"&answer="+ans);
     xhttp.open("GET", "https://codecyprus.org/th/api/answer?session=" + getCookie("session")+"&answer="+ans, true);
@@ -173,7 +171,6 @@ function ansText(ans)
     console.log("ansText ENDED");
 
 }
-showScore();
 function showScore() {
     console.log("showScore STARTED");
     let xhttp = new XMLHttpRequest();
