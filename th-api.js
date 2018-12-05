@@ -92,7 +92,7 @@ function getQuestions() {
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
-            console.log(this.responseText);
+            console.log("QUESTIONN=======>"+this.responseText);
             let object = JSON.parse(this.responseText);
             console.log(object);
             needsLocation = object['requiresLocation'];
@@ -110,7 +110,7 @@ function getQuestions() {
 
             console.log(document.cookie);
             console.log(object.questionText);
-            quest.innerHTML = object.questionText;
+            quest.innerHTML = object.currentQuestionIndex+1+"/"+object.numOfQuestions + "   " + object.questionText;
 
             if (object.questionType === "MCQ")
             {
