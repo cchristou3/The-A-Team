@@ -88,6 +88,7 @@ let needsLocation = true;
 let canBeSkipped = true;
 function getQuestions() {
     // console.log("GET QUESTIONS STARTED");
+    console.log("QUESTION SESSION===> "+getCookie("session"));
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
@@ -105,10 +106,6 @@ function getQuestions() {
                 window.location.href = "leaderboard.html";
             }
 
-            // if (object.requiresLocation===true)
-            // {
-            //     getLocation();
-            // }
             let quest = document.getElementById("QuestionArea");
 
             console.log(document.cookie);
@@ -195,15 +192,7 @@ function showScore() {
     xhttp.send();
     console.log("showScore ENDED");
 }
-function myFunction() {
-    var txt;
-    if (confirm("Press a button!")) {
-        txt = "You pressed OK!";
-    } else {
-        txt = "You pressed Cancel!";
-    }
-    document.getElementById("demo").innerHTML = txt;
-}
+
 function skipQuestion() {
 
     if (canBeSkipped === true){
@@ -304,15 +293,17 @@ function getCookie(Cookiename){
     return "";
 }
 function checkCookie() {
-    let username = getCookie("username");
-    if (username !== "") {
-        alert("Welcome again " + username);
-    } else {
-        username = prompt("Please enter your name:", "");
-        if (username !== "" && username != null) {
-            setCookie("username", username, 365);
+    let session = getCookie("session");
+    console.log("SESSION COOKIE====> "+session);
+    if (session !== "") {
+        if (confirm("You have progress, would you like to continue?")) {
+            window.location.href = "Questions.html";
         }
+        else
+            document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;'
     }
+
+
 }
 
 //-------------------------------------------------------------------------------------------//
