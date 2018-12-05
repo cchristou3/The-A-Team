@@ -267,11 +267,14 @@ function leaderboard() {
 }
 
 function getParameters() {
-    // console.log("GETPARAMETERS START");
     let getName  = document.getElementById("playerName");
-    // console.log(getName.value);
-    start(getName.value, selectedTreasureHuntID);
-    // console.log("GETPARAMETERS END");
+    if (!getName.value)
+    {
+        alert("Please enter a username");
+    }
+    else {
+        start(getName.value, selectedTreasureHuntID);
+    }
 }
 
 //-------------------------------------------------------------------------------------------//
