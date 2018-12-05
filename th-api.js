@@ -135,7 +135,7 @@ function getQuestions() {
         }
         else {
             // Error message: TODO
-            //console.log(object.status);
+           alert("No Internet Connection");
         }
 
     };
