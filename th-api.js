@@ -42,7 +42,7 @@ function getChallenges() {
             }
         }
         else {
-            alert("No Internet Connection, Please connect to the Internet");
+            alert("No Internet Connection, Please connect to the Internet 1");
         }
     };
     xhttp.open("GET", "https://codecyprus.org/th/api/list", true);
@@ -72,7 +72,7 @@ function start(name, treasureHuntID) {
             }
         }
         else {
-            alert("No Internet Connection, Please connect to the Internet");
+            alert("No Internet Connection, Please connect to the Internet 2");
         }
     };
     xhttp.open("GET", "https://codecyprus.org/th/api/start?player=" + name + "&app=The-A-Team&treasure-hunt-id=" + treasureHuntID, true);
@@ -133,7 +133,7 @@ function getQuestions() {
         }
         else {
             // Error message: TODO
-            alert("No Internet Connection, Please connect to the Internet");
+            alert("No Internet Connection, Please connect to the Internet 3");
         }
 
     };
@@ -163,7 +163,7 @@ function ansText(ans)
             showScore();
         }
         else
-            alert("No Internet Connection, Please connect to the Internet");
+            alert("No Internet Connection, Please connect to the Internet 4");
     };
     console.log("https://codecyprus.org/th/api/answer?session=" + getCookie("session")+"&answer="+ans);
     xhttp.open("GET", "https://codecyprus.org/th/api/answer?session=" + getCookie("session")+"&answer="+ans, true);
@@ -184,7 +184,7 @@ function showScore() {
         }
         else
         {
-            alert("No Internet Connection, Please connect to the Internet");
+            alert("No Internet Connection, Please connect to the Internet 5");
         }
     };
     xhttp.open("GET", "https://codecyprus.org/th/api/score?session=" + getCookie("session"), true);
@@ -254,8 +254,8 @@ function leaderboard() {
         }
         else
         {
-            alert("No Internet Connection, Please connect to the Internet");
-        }
+            alert("No Internet Connection, Please connect to the Internet 7");
+
     };
     xhttp.open("GET", URL + "leaderboard?session=" + getCookie("session")+"&sorted&limit=10", true);
     xhttp.send();
@@ -344,7 +344,7 @@ function locationToServer(position) {
             console.log("locationToServer ==> Success");
         }
         else
-            alert("No Internet Connection, Please connect to the Internet");
+            alert("No Internet Connection, Please connect to the Internet 8");
     };
     xhttp.open("GET", "https://codecyprus.org/th/api/location?session=" + getCookie("session") + "&latitude=" + latitude + "&longitude=" + longitude, true);
     xhttp.send();
