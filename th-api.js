@@ -216,6 +216,14 @@ function isTest() {
     return url.searchParams.get("test") != null;
 }
 function leaderboard() {
+
+    let testURL = "https://codecyprus.org/th/test-api/";
+    let normalURL = "https://codecyprus.org/th/api/";
+    let URL;
+
+    if (isTest()) URL = testURL;
+    else URL = normalURL;
+
     console.log("LEADERBOARD===> STARTED");
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
@@ -251,7 +259,7 @@ function leaderboard() {
             //TODO ERROR MSG
         }
     };
-    xhttp.open("GET", "https://codecyprus.org/th/api/leaderboard?session=" + getCookie("session")+"&sorted&limit=10", true);
+    xhttp.open("GET", URL + "leaderboard?session=" + getCookie("session")+"&sorted&limit=10", true);
     xhttp.send();
 }
 
