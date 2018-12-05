@@ -159,9 +159,11 @@ function ansText(ans)
             if (object.correct === true)
             {
                 alert(object.correct);
+
                 location.reload();
             }else
                 alert("Wrong Answer!, You lose 3 points, Try again");
+
             showScore();
         }
     };
@@ -171,7 +173,7 @@ function ansText(ans)
     console.log("ansText ENDED");
 
 }
-
+showScore();
 function showScore() {
     console.log("showScore STARTED");
     let xhttp = new XMLHttpRequest();
