@@ -108,32 +108,44 @@ function getQuestions() {
                 document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
                 window.location.href = "leaderboard.html";
             }
-
+            document.getElementById("numQuestions").innerHTML = "Number of current question: "+object.currentQuestionIndex+"<br>"+
+                "Number of total questions: "+object.numOfQuestions;
             let quest = document.getElementById("QuestionArea");
 
             console.log(document.cookie);
             console.log(object.questionText);
-            quest.innerHTML = object.currentQuestionIndex+1+"/"+object.numOfQuestions + "   " + object.questionText;
+            quest.innerHTML =  object.questionText;
 
             if (object.questionType === "MCQ")
             {
                 document.getElementById("Select").style.display = "block";
+                if (canBeSkipped)
+                    document.getElementById("skipbutton").innerHTML = "<input type='button' value='skip' class='submit' onclick='skipQuestion()'>";
+
             }
             if (object.questionType === "TEXT")
             {
                 document.getElementById("Text").style.display = "block";
+                if (canBeSkipped)
+                    document.getElementById("skipbutton").innerHTML = "<input type='button' value='skip' class='submit' onclick='skipQuestion()'>";
             }
             if (object.questionType === "INTEGER")
             {
                 document.getElementById("Numbers").style.display = "block";
+                if (canBeSkipped)
+                    document.getElementById("skipbutton").innerHTML = "<input type='button' value='skip' class='submit' onclick='skipQuestion()'>";
             }
             if (object.questionType === "BOOLEAN")
             {
                 document.getElementById("Boolean").style.display = "block";
+                if (canBeSkipped)
+                    document.getElementById("skipbutton").innerHTML = "<input type='button' value='skip' class='submit' onclick='skipQuestion()'>";
             }
             if (object.questionType === "NUMERIC")
             {
                 document.getElementById("Numeric").style.display = "block";
+                if (canBeSkipped)
+                    document.getElementById("skipbutton").innerHTML = "<input type='button' value='skip' class='submit' onclick='skipQuestion()'>";
             }
         }
         else {
@@ -206,8 +218,6 @@ function skipQuestion() {
         xhttp.send();
      }
     }
-    else
-        alert("CAN NOT BE SKIPPED");
 }
 function isTest() {
     let url = new URL(window.location.href);
