@@ -211,7 +211,8 @@ function leaderboard() {
             let object = JSON.parse(this.responseText);
             let objectArray = object['leaderboard'];
             let options = { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', second: '2-digit'};
-            let html = "<table>" + "<tr>"+"<th>" +"Name" +"</th>"+
+            let html = "<table>" +
+                "  <td>"+"Name"+ "</td>"+
                 "<th>" +"Score" +"</th>"+
                 "<th>" +"Time" +"</th>"+
                 "</tr>";
