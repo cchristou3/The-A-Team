@@ -48,7 +48,6 @@
     <form>
         <input class="textbox" id="answerText" type="text"  placeholder="Type here...">
         <input type="button"  value="submit" class="submit"  onclick="ansText(document.getElementById('answerText').value)">
-        <input type="button"  value="skip" class="submit" onclick="skipQuestion()">
     </form>
 </div>
 
@@ -63,7 +62,6 @@
     <form>
         <input class="submit" type="button" value="true"  onclick="ansText('true')">
         <input class="submit" type="button" value="false"  onclick="ansText('false')">
-        <input class="submitskip" type="button" name="skip" value="skip" class="submit" onclick="skipQuestion()">
     </form>
 </div>
 
@@ -73,10 +71,19 @@
         <input  class="submit" type="button" name="answer" value="submit" class="submit" onclick="ansText(document.getElementById('ansNumeric').value)">
     </form>
 </div>
+<div id ="skipbutton">
+
+
+</div>
+
+<input type="button" value="SQR" onclick="SQR()">
+<video id="preview"></video>
+<div style="margin: 20px; padding: 20px; background-color: black; color: white; text-align: center;" id="content"></div>
 
 <!--Help Button -->
 <a href="index.html" class="help">Back</a>
 <a href="help.html" class="help">Help</a>
 <script src="th-api.js"></script>
+<script src="instascan.min.js"></script>
 </body>
 </html>

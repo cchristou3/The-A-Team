@@ -73,9 +73,9 @@ function start(name, treasureHuntID) {
             }
         }
         else if (this.readyState === 0)
-            {
-                console.log("NAME ALREADY DEFINED");
-            }
+        {
+            console.log("NAME ALREADY DEFINED");
+        }
 
 
     };
@@ -175,7 +175,7 @@ function ansText(ans)
                 location.reload();
             }else
                 alert("Wrong Answer!, You lose 3 points, Try again");
-            }
+        }
     };
     console.log("https://codecyprus.org/th/api/answer?session=" + getCookie("session")+"&answer="+ans);
     xhttp.open("GET", "https://codecyprus.org/th/api/answer?session=" + getCookie("session")+"&answer="+ans, true);
@@ -209,14 +209,14 @@ function skipQuestion() {
     if (canBeSkipped === true){
         if(confirm("Are sure you want to skip the question?\n You will lose 5 points"))
         {
-        let xhttp = new XMLHttpRequest();
-        xhttp.onload = function () {         //TODO If response received (success).
-            let object = JSON.parse(this.responseText);
-            location.reload();
-        };
-        xhttp.open("GET", "https://codecyprus.org/th/api/skip?session=" + getCookie("session"), true);
-        xhttp.send();
-     }
+            let xhttp = new XMLHttpRequest();
+            xhttp.onload = function () {         //TODO If response received (success).
+                let object = JSON.parse(this.responseText);
+                location.reload();
+            };
+            xhttp.open("GET", "https://codecyprus.org/th/api/skip?session=" + getCookie("session"), true);
+            xhttp.send();
+        }
     }
 }
 function isTest() {
@@ -241,7 +241,7 @@ function leaderboard() {
             let object = JSON.parse(this.responseText);
             let objectArray = object['leaderboard'];
             let options = { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', second: '2-digit'};
-                let html = "<table>" + "<tr>"+"<th>" +"Name" +"</th>"+
+            let html = "<table>" + "<tr>"+"<th>" +"Name" +"</th>"+
                 "<th>" +"Score" +"</th>"+
                 "<th>" +"Time" +"</th>"+
                 "</tr>";
