@@ -101,7 +101,7 @@ function getQuestions() {
                 document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
                 window.location.href = "leaderboard.html";
             }
-            document.getElementById("numQuestions").innerHTML = "Number of current question: "+(object.currentQuestionIndex++)+"<br>"+
+            document.getElementById("numQuestions").innerHTML = "Number of current question: "+(object.currentQuestionIndex+=1)+"<br>"+
                 "Number of total questions: "+object.numOfQuestions;
             let quest = document.getElementById("QuestionArea");
 
