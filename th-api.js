@@ -383,7 +383,6 @@ function showError(error) {
 
 // SQR FUNCTION
 function SQR() {
-    document.getElementById("SQRcamera").style.display="block";
 
     var opts = {
         // Whether to scan continuously for QR codes. If false, use scanner.scan() to
@@ -422,6 +421,7 @@ function SQR() {
     var scanner = new Instascan.Scanner(opts);
     Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {
+            document.getElementById("SQRcamera").style.display="block";
             scanner.start(cameras[0]);
         } else {
             console.error('No cameras found.');
