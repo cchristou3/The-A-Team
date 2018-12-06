@@ -3,32 +3,6 @@ though this page does not need to be particularly nice, you it should still be
 usable and present your work in a meaningful and academically appropriate way.-->
 
 
-<!--Function1(checks the user input name, application name)
- if( submit button pressed checks what is inside the text box )
-  {
-   if everything inputed correctly then create a new account
-   if it the user is already registered it takes him to his progress
-   if the name of the new account that the user want's to create is taken then prompt him to input a different name
-   }
-   function List (shows all available treasure hunts)
-   function Skip (the user can skip a specific question and looses points)
-   function Answer question()
-   if true { the user proceeds to the next question and gains points}
-
-   if false{ he doesn't proceed to the next question and looses point)
-
-   for leaderboard we have to create a button at the index which when is pressed shows it. we have to create array which includes the name and the score of all
-   the players and it will auto-sorted inside a for loop and prints the top ten players with highscores
-   for the log in it must compare the name that the user gives with the name inside the array
-   if its found it takes you to the user progress
-   if not found create a new *pop array entry with 0 points
-
-
-   -->
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,9 +13,7 @@ usable and present your work in a meaningful and academically appropriate way.--
 </head>
 <body>
 
-Produce a test plan to address the following questions: <br>
-• Who is going to test your app? <br>
-All the members of our team and professors,possible all the rest of our classmates and random users through the social media
+
 
 • What specific aspects will they test? <br>
 Usability,design,user-friendly,responsive design and for defects(bugs).
@@ -56,6 +28,9 @@ Usability,design,user-friendly,responsive design and for defects(bugs).
 9.Help users recognize,diagnose, and recover from errors-> Our app complies this requirement all the alerts are in plain language and suggesting solutions
 10.Help and documentation->
 
+Produce a test plan to address the following questions: <br>
+• Who is going to test your app? <br>
+All the members of our team and professors,possible all the rest of our classmates and random users through the social media
 • When will they do the testing? <br>
 While working on the app and when it will be released.
 
@@ -65,7 +40,7 @@ It will be recorded on the table.
 • What happens when a defect (bug) is discovered? <br>
 We assign someone of our team to fix it or at least improve it.
 
-
+Some problems our team faced:
 Problem1: When clicking on a treasure hunt the form application did not appear and the app navigated to the wrong website
 Assigned person: Charalambos
 Result: problem solved, used correct css properies and changed the https request link
@@ -80,9 +55,8 @@ Problem3: Blurry background, not easy to read the text overall, buttons too smal
 Assigned person: Christodoulos
 Result: problem solved, lots of css properties changed
 
-Problem4: When answering questions no appropriate messages appear
 
-Problem5:The app asks the user for location each time a question appears, even when it does not appear
+Problem4:The app asks the user for location each time a question appears, even when it does not appear
 Assigned person: Charalambos
 Result: problem solved, changed the flow of the javascript
 
@@ -93,11 +67,7 @@ According to the type of the defect it will be assigned to the person that is re
 • How will you trigger re-testing of the code?<br>
 We will create a table with the expected outputs comparing them to the one's that we have as output.
 
-#The app asks the user for location each time a question appears: solved
-#Added corresponding messages for questions+ skip
-#Added alert box for undefined usernames
-#Do not display a skip button for questions that cannot be skipped. DONE
-#Your question number (1/5 2/5 etc) could be separated from the question content. DONE
+
 
 
 
@@ -110,17 +80,7 @@ We will create a table with the expected outputs comparing them to the one's tha
 https://www.w3schools.com/howto/howto_js_filter_lists.asp the link of a sample for creating list and implementing it inside the app through html,css and javascript.
 
 <h1>All Challenges</h1>
-<ul id="challenges">
 
-</ul>
 
 </body>
 </html>
-
-<!-- Question Text = works
-     Question Numbers/integers = works
-     Question Boolean
-     Question
-     Question
-
--->
