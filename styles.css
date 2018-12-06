@@ -338,3 +338,6 @@ body {background: url("shipphotoshop.jpg") repeat;
     border: 5px solid darkgoldenrod;
 
 }
+#SQRcamera{
+    display:none;
+}
