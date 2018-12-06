@@ -1,8 +1,11 @@
 #treasureHuntsList{
     text-align: center;
+
 }
 #challenges{
     display: inline-block;
+
+
 }
 li{
     border: 1px solid black;
@@ -30,7 +33,9 @@ h2{font-family:sans-serif;
     color:white;
     border:3px solid yellow;
     background-color: black;
-    margin:20px;
+    width: 80%;
+    margin:10%;
+    border-radius: 15%;
 
 }
 h3{font-family:sans-serif;
@@ -38,9 +43,20 @@ h3{font-family:sans-serif;
     text-align:center;
     color :white;}
 
-body {background: url("shipphotoshop.jpg") repeat;
-    max-height: 1366px;
-    max-width: 1024px;
+h5{font-family:sans-serif;
+    font-size:120%;
+    text-align:center;
+    color:white;
+    border:2px solid yellow;
+    background-color: black;
+    margin:20px;
+    border-radius: 20%;
+
+}
+
+body {background: url("shiporiginal.png") repeat;
+    max-height: 1920px;
+    max-width: 1080px;
 
 }
 
@@ -52,12 +68,13 @@ body {background: url("shipphotoshop.jpg") repeat;
 /* Text cloud */
 
 .cloudtext{
-    font-weight: lighter;
+    font-weight: bold;
     font-family:sans-serif;
-    font-size:15px;
+    font-size:80%;
     position: relative;
     text-align: center;
     color: black;
+
 
     }
 .container{
@@ -79,12 +96,12 @@ body {background: url("shipphotoshop.jpg") repeat;
     transform: translate(-50%, -50%);
 }
 .cloud{
-    width:70%;
-    height: 60%;
+    width:65%;
+    height: 55%;
 }
-/*Pirate Image*/
 
-.pirate {
+
+.images {
 
     display: block;
     margin-left: 30%;
@@ -190,18 +207,17 @@ body {background: url("shipphotoshop.jpg") repeat;
 #Select{
     display:none;
 }
-.challenges{
+#challenges {
 
-    font-family:sans-serif;
-    font-size:20px;
-    text-align:center;
-    color:white;
-    border: 5px solid darkgoldenrod;
-    background-color:black;
-    margin:20px;
-    width: 250px;
-    border-radius:12px;
-
+    font-family: sans-serif;
+    font-size: 130%;
+    text-align: center;
+    color: darkgoldenrod;
+    margin: 5%;
+    width: 70%;
+    background: black;
+    border-radius: 2%;
+    border-color: goldenrod;
 }
 .playerName{
     font-family: "Bell MT", sans-serif;
@@ -209,25 +225,26 @@ body {background: url("shipphotoshop.jpg") repeat;
     text-align: center;
     color: black;
     background-color: white;
+    opacity: 0.6;
     border: 3px solid darkgoldenrod;
-    opacity: 0.8;
     filter: alpha(opacity=60);
     border-radius: 20px;
-    margin-left: 20%;
+    width: 80%;
+    margin-left: 10%;
 }
 
 #QuestionArea{
     font-style: italic;
     font-family: Harrington sans-serif;
     font-size: 150%;
-    margin: 20%;
+    margin: 10%;
     background-color: #ffffff;
     opacity: 0.9;
     box-sizing: border-box;
-    width: 60%;
+    width: 80%;
     height: 50%;
     border: 5px solid darkgoldenrod;
-
+    border-radius: 15%;
 
 }
 .submit{
@@ -238,8 +255,8 @@ body {background: url("shipphotoshop.jpg") repeat;
     border-radius: 10%;
     font-size: 20px;
     cursor: pointer;
-    width:100px;
-    margin-left:15%;
+    width:50%;
+    margin-left:25%;
     border: outset white;
     text-align: center;
     margin-top: 5%;
@@ -252,31 +269,32 @@ body {background: url("shipphotoshop.jpg") repeat;
     border-radius: 10%;
     font-size: 20px;
     cursor: pointer;
-    width:50px;
-    margin-left:15%;
+    width:20%;
+    margin-left:20%;
     border: outset white;
     text-align: center;
     margin-top: 5%;
 
 }
 
+
 .submitskip{
     display: inline;
-    background-color: darkgoldenrod;
+    background-color: greenyellow;
     color: black;
     padding: 5px 1px;
     border-radius: 10%;
     font-size: 20px;
     cursor: pointer;
     width:100px;
-    margin-left:35%;
+    margin-left:20%;
     border: outset white;
     text-align: center;
     margin-top: 5%;
 }
 .textbox{
     font-family: "Bell MT", sans-serif;
-    font-size: 20px;
+    font-size: 100%;
     text-align: center;
     color: black;
     background-color: white;
@@ -284,8 +302,9 @@ body {background: url("shipphotoshop.jpg") repeat;
     opacity: 0.8;
     filter: alpha(opacity=60);
     border-radius: 20px;
-    margin-left: 20%;
+    margin-left: 5%;
     margin-top: 5%;
+    width: 90%;
 
 }
 
@@ -307,8 +326,8 @@ body {background: url("shipphotoshop.jpg") repeat;
     opacity: 0.8;
     filter: alpha(opacity=60);
     border-radius: 20px;
-    margin-left:20%;
-    width: 60%;
+    margin-left:5%;
+    width: 90%;
 }
 .leaderboard{
 
@@ -333,15 +352,32 @@ body {background: url("shipphotoshop.jpg") repeat;
     font-style: italic;
     font-family: Harrington sans-serif;
     font-size: 150%;
-    margin: 20%;
+    margin: 10%;
     background-color: #ffffff;
     opacity: 0.9;
     box-sizing: border-box;
-    width: 60%;
+    width: 80%;
     height: 50%;
     border: 5px solid darkgoldenrod;
+    border-radius: 15%;
 
 }
 #SQRcamera{
     display:none;
+
+
+}
+.sqr{
+    display: inline;
+    background-color: crimson;
+    color: black;
+    padding: 5px 1px;
+    border-radius: 10%;
+    font-size: 20px;
+    cursor: pointer;
+    width:50%;
+    margin-left:25%;
+    border: outset white;
+    text-align: center;
+    margin-top: 5%;
 }
