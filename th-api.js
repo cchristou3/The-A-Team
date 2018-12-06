@@ -427,11 +427,12 @@ function SQR() {
             console.error('No cameras found.');
             alert("No cameras found.");
         }
+        scanner.addListener('scan', function (content) {
+            console.log(content);
+            document.getElementById("content").innerHTML = content;
+        });
     }).catch(function (e) {
         console.error(e);
     });
-    scanner.addListener('scan', function (content) {
-        console.log(content);
-        document.getElementById("content").innerHTML = content;
-    });
+
 }
