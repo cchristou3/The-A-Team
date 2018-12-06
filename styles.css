@@ -325,3 +325,16 @@ body {background: url("shipphotoshop.jpg") repeat;
     max-width:100%;
 
 }
+#numQuestions{
+    font-style: italic;
+    font-family: Harrington sans-serif;
+    font-size: 150%;
+    margin: 20%;
+    background-color: #ffffff;
+    opacity: 0.9;
+    box-sizing: border-box;
+    width: 60%;
+    height: 50%;
+    border: 5px solid darkgoldenrod;
+
+}
