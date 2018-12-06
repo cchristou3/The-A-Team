@@ -58,23 +58,16 @@ function start(name, treasureHuntID) {
     console.log("START STARTED WITH PLAYER NAME: " + name + " AND TREASUREHUNTID: " + treasureHuntID);
 
     let xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
-            console.log(this.responseText);
-            let object = JSON.parse(this.responseText);
-            if (object.status === "ERROR") {
-                //TODO ERROR
-            }
-            else {
-                //TODO OK
-                // document.cookie = "session=" + object.session;
-                setCookie("session", object.session, 365);
-                window.location.href = "Questions.html";
-            }
+    xhttp.onload = function () {
+        console.log(this.responseText);
+        let object = JSON.parse(this.responseText);
+        if (object.status === 'OK') {
+            setCookie("session", object.session, 365);
+            window.location.href = "Questions.html";
         }
-        else if (this.readyState === 0)
-        {
-            console.log("NAME ALREADY DEFINED");
+        else {
+            document.getElementById("definedname").innerHTML = "The specified playerName: "+name+", is already in use (try a different one).";
+            console.log(object['errorMessages'][0]);
         }
 
 
@@ -108,7 +101,7 @@ function getQuestions() {
                 document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
                 window.location.href = "leaderboard.html";
             }
-            document.getElementById("numQuestions").innerHTML = "Number of current question: "+object.currentQuestionIndex+"<br>"+
+            document.getElementById("numQuestions").innerHTML = "Number of current question: "+object.currentQuestionIndex+1+"<br>"+
                 "Number of total questions: "+object.numOfQuestions;
             let quest = document.getElementById("QuestionArea");
 
