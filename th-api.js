@@ -383,7 +383,7 @@ function showError(error) {
 
 // SQR FUNCTION
 function SQR() {
-
+    document.getElementById("SQRcamera").style.display="block";
 
     var opts = {
         // Whether to scan continuously for QR codes. If false, use scanner.scan() to
