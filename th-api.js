@@ -14,6 +14,7 @@ function getChallenges() {
             //  console.log(this.responseText);
             let object = JSON.parse(this.responseText);
             console.log("STATUS ==> "+object.status);
+            // The list will load onload
             for (let i = 0;i<object.treasureHunts.length;i++)
             {
                 let newItem = document.createElement("li");
@@ -26,25 +27,10 @@ function getChallenges() {
                 newItem.appendChild(linkItem);
                 challengesList.appendChild(newItem);
 
-                //  console.log(object.treasureHunts[i].name);
             }
-            // We use for loop to make sure all treasureHunts
-            for (let i = 0;i<object.treasureHunts.length;i++)
-            {
-                var e = document.getElementById("#myLink"+i);
-                // when user clicks on a treasure Hunts, a form appears while the list disappears
-                e.onclick = function(){
-                    //setCookie("session", object.treasureHunts[i].uuid, 365);
-                    // document.cookie = "uuid="+object.treasureHunts[i].uuid;
-                    // The cookie saves the session
-                    console.log("DOCUMENT COOKIE= "+document.cookie);
-                }
-            }
+
         }
-        else {
-            //TODO If response not received (error).
-            // Need to run without Internet connection to be tested
-        }
+
     };
     xhttp.open("GET", "https://codecyprus.org/th/api/list", true);
     xhttp.send();
@@ -97,7 +83,7 @@ function getQuestions() {
             if (object['completed'] === true)
             {
                 //https://stackoverflow.com/questions/2144386/how-to-delete-a-cookie
-
+                setCookie()
                 document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
                 window.location.href = "leaderboard.html";
             }
@@ -141,9 +127,6 @@ function getQuestions() {
                     document.getElementById("skipbutton").innerHTML = "<input type='button' value='skip' class='submit' onclick='skipQuestion()'>";
             }
         }
-        else {
-            // Error message: TODO
-        }
 
     };
     xhttp.open("GET", "https://codecyprus.org/th/api/question?session=" + getCookie("session"), true);
@@ -185,11 +168,6 @@ function showScore() {
             let object = JSON.parse(this.responseText);
             let divScore = document.getElementById("playerScore");
             divScore.innerHTML = "<p> Player: " + object.player + "  Score: " + object.score + "</p>";
-        }
-        else
-        {
-            console.log("ERROR MESSAGE!");
-            //TODO ERROR MSG
         }
     };
     xhttp.open("GET", "https://codecyprus.org/th/api/score?session=" + getCookie("session"), true);
@@ -254,11 +232,6 @@ function leaderboard() {
             let list =  document.getElementById("leaderboardList");
             list.innerHTML = html;
             // the leaderboard will load through javascript inner.HTML implementation
-        }
-        else
-        {
-            console.log("ERROR MESSAGE!");
-            //TODO ERROR MSG
         }
     };
     xhttp.open("GET", URL + "leaderboard?session=" + getCookie("session")+"&sorted&limit=10", true);
@@ -328,13 +301,7 @@ function getLocation() {
     }
 }
 
-// shows the location in HTML
-function showPosition(position) {
-    // var x = document.getElementById("QuestionArea");
-    // x.innerHTML="Latitude: " + position.coords.latitude +
-    //     "<br>Longitude: " + position.coords.longitude;
-    // locationToServer(position.coords.latitude,position.coords.longitude);
-}
+
 
 function locationToServer(position) {
     let longitude = position.coords.longitude;
@@ -415,7 +382,7 @@ function SQR() {
     Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {
             document.getElementById("SQRcamera").style.display="block";
-            scanner.start(cameras[1]);
+            scanner.start(cameras[0]);
         } else {
             console.error('No cameras found.');
             alert("No cameras found.");
