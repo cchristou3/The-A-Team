@@ -48,10 +48,12 @@ function start(name, treasureHuntID) {
         console.log(this.responseText);
         let object = JSON.parse(this.responseText);
         if (object.status === 'OK') {
+            // we use cookies to save the session of the selected treasurehunt id
             setCookie("session", object.session, 365);
             window.location.href = "Questions.html";
         }
         else {
+            // prints error message
             document.getElementById("definedname").innerHTML = "The specified playerName: "+name+", is already in use (try a different one).";
             console.log(object['errorMessages'][0]);
         }
@@ -94,6 +96,7 @@ function getQuestions() {
             console.log(object.questionText);
             quest.innerHTML =  object.questionText;
 
+            //Depending on what question type it is the corresponding answer box will appear
             if (object.questionType === "MCQ")
             {
                 document.getElementById("Select").style.display = "block";
@@ -133,6 +136,7 @@ function getQuestions() {
 }
 function ansText(ans)
 {
+    // if the question requires location, it will ask the user for his/her location
     if (needsLocation) {
         getLocation();
     }
@@ -210,6 +214,7 @@ function leaderboard() {
             console.log("GET LEADERBOARD RESPONSE --> " + this.responseText);
             let object = JSON.parse(this.responseText);
             let objectArray = object['leaderboard'];
+            // this code will make the time readable for the human
             let options = { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', second: '2-digit'};
             let html = "<table>" +
                 "  <td>"+"Name"+ "</td>"+
